@@ -82,4 +82,4 @@ All screenshots above can be found at the example project.
 ## License
 --------------------------------------------------------------
 
-MIT
+Apache 2.0
