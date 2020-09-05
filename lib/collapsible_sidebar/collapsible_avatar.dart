@@ -36,8 +36,7 @@ class CollapsibleAvatar extends StatelessWidget {
           fit: BoxFit.fill,
           height: avatarSize,
           width: avatarSize,
-        )
-    );
+        ));
   }
 
   Widget get _initials {

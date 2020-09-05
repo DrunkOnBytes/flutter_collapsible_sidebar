@@ -78,7 +78,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
   void initState() {
     super.initState();
 
-    tempWidth = widget.maxWidth>270 ? 270 : widget.maxWidth;
+    tempWidth = widget.maxWidth > 270 ? 270 : widget.maxWidth;
 
     _currWidth = widget.minWidth;
     _delta = tempWidth - widget.minWidth;
@@ -148,7 +148,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       alignment: Alignment.topLeft,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: widget.minWidth*1.1),
+          padding: EdgeInsets.only(left: widget.minWidth * 1.1),
           child: widget.body,
         ),
         Padding(
@@ -166,7 +166,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _avatar,
-                  Spacer(flex: 10,),
+                  Spacer(
+                    flex: 10,
+                  ),
                   Stack(
                     alignment: Alignment.topCenter,
                     children: [
@@ -180,9 +182,22 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                       Column(children: _items),
                     ],
                   ),
-                  Spacer(flex: 1,),
-                  widget.showCollapseButton ? Divider(color: widget.unselectedIconColor, indent: 5, endIndent: 5) : SizedBox(height: 5,),
-                  widget.showCollapseButton ? _toggleButton : SizedBox(height: widget.iconSize,),
+                  Spacer(
+                    flex: 1,
+                  ),
+                  widget.showCollapseButton
+                      ? Divider(
+                          color: widget.unselectedIconColor,
+                          indent: 5,
+                          endIndent: 5)
+                      : SizedBox(
+                          height: 5,
+                        ),
+                  widget.showCollapseButton
+                      ? _toggleButton
+                      : SizedBox(
+                          height: widget.iconSize,
+                        ),
                 ],
               ),
             ),
