@@ -3,8 +3,7 @@
 
 A collapsible sidebar for Flutter apps implementing the Material Design.
 
-<img src="https://github.com/RyuuKenshi/flutter_collapsible_sidebar/blob/master/screenshot/collapsible_sidebar.gif" width="250">
-![indicator](screenshot/collapsible_sidebar.gif | height=250)
+![indicator](screenshot/collapsible_sidebar.gif)
 
 
 ## Features 
