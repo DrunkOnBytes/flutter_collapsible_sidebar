@@ -3,20 +3,28 @@
 
 A collapsible sidebar for Flutter apps implementing the Material Design.
 
-<img src="https://github.com/RyuuKenshi/flutter_collapsible_sidebar/blob/master/screenshot/collapsible_sidebar.gif" width="250">
+<div class="row">
+  <div class="col-md-8" markdown="1">
+  <img src="https://github.com/RyuuKenshi/flutter_collapsible_sidebar/blob/master/screenshot/collapsible_sidebar.gif" width="250">
+  </div>
+  <div class="col-md-4" markdown="1">
+  
+  ## Features 
 
-## Features 
+  * Material Design
+  * Pre-built customizable tile widgets (CollapsibleItems)
+  * Smooth Animation
 
-* Material Design
-* Pre-built customizable tile widgets (CollapsibleItems)
-* Smooth Animation
+  ## Supported platforms
 
-## Supported platforms
+  * Flutter Android
+  * Flutter iOS
+  * Flutter web
+  * Flutter desktop
+  
+  </div>
+</div>
 
-* Flutter Android
-* Flutter iOS
-* Flutter web
-* Flutter desktop
 
 ## Live preview
 
