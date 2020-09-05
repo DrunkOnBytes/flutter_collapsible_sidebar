@@ -189,7 +189,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                       ? Divider(
                           color: widget.unselectedIconColor,
                           indent: 5,
-                          endIndent: 5)
+                          endIndent: 5,
+                          thickness: 1,
+                        )
                       : SizedBox(
                           height: 5,
                         ),

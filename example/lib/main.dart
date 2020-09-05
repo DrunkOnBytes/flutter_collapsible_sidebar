@@ -43,12 +43,12 @@ class _SidebarPageState extends State<SidebarPage> {
         text: 'Dashboard',
         icon: Icons.assessment,
         onPressed: () => setState(() => _headline = 'DashBoard'),
+        isSelected: true,
       ),
       CollapsibleItem(
         text: 'Errors',
         icon: Icons.cancel,
         onPressed: () => setState(() => _headline = 'Errors'),
-        isSelected: true,
       ),
       CollapsibleItem(
         text: 'Search',
