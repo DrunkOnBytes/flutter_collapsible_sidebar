@@ -27,7 +27,8 @@ class SidebarPage extends StatefulWidget {
 class _SidebarPageState extends State<SidebarPage> {
   List<CollapsibleItem> _items;
   String _headline;
-  final _avatarImg = NetworkImage('https://www.w3schools.com/howto/img_avatar.png');
+  NetworkImage _avatarImg =
+      NetworkImage('https://www.w3schools.com/howto/img_avatar.png');
 
   @override
   void initState() {
@@ -70,11 +71,13 @@ class _SidebarPageState extends State<SidebarPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return CollapsibleSidebar(
-      items: _items,
-      avatarImg: _avatarImg,
-      title: 'John Smith',
-      body: _body(size, context),
+    return SafeArea(
+      child: CollapsibleSidebar(
+        items: _items,
+        avatarImg: _avatarImg,
+        title: 'John Smith',
+        body: _body(size, context),
+      ),
     );
   }
 
@@ -100,4 +103,3 @@ class _SidebarPageState extends State<SidebarPage> {
     );
   }
 }
-
