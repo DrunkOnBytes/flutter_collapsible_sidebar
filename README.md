@@ -3,6 +3,8 @@
 
 A collapsible sidebar for Flutter apps implementing the Material Design.
 
+<img src="https://github.com/RyuuKenshi/flutter_collapsible_sidebar/blob/master/screenshot/collapsible_sidebar.gif" width="250">
+
 ## Features 
 
 * Material Design
@@ -18,7 +20,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 
 ## Live preview
 
-https://serenader2014.github.io/flutter_carousel_slider/#/
+https://ryuukenshi.github.io/collapsible_sidebar
 
 Note: this page is built with flutter-web. For a better user experience, please use a mobile device to open this link.
 
@@ -71,13 +73,6 @@ CollapsibleSidebar(
     showCollapseButton: true,
 )
 ```
-
-## Screenshot
-----------------------------------------------------------------
-
-<img src="https://github.com/RyuuKenshi/flutter_collapsible_sidebar/blob/master/screenshot/collapsible_sidebar.gif" width="250">
-
-All screenshots above can be found at the example project.
 
 ## License
 --------------------------------------------------------------
