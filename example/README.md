@@ -21,5 +21,5 @@ flutter run
 # Building
 
 ```
-flutter build ios # or flutter build apk
+flutter build ios  OR  flutter build apk
 ```
