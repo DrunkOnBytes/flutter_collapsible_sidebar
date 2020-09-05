@@ -75,7 +75,7 @@ CollapsibleSidebar(
 ## Screenshot
 ----------------------------------------------------------------
 
-![Collapsible Sidebar](screenshot/collapsible_sidebar.gif)
+![Collapsible Sidebar](screenshot/collapsible_sidebar.gif =100x200)
 
 All screenshots above can be found at the example project.
 
