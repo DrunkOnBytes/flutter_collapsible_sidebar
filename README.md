@@ -32,14 +32,14 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 
 ## How to use
 
-Simply create a `CollapsibleSidebar` widget and a list of `CollapsibleItems`. Finally add the required parameters to `CollapsibleSidebar` and a `body` widget which will occupy the remaining screen:
+Simply create a `CollapsibleSidebar` widget and a list of `CollapsibleItems` suppose `_items`. Finally add the required parameters to `CollapsibleSidebar` and a `body` widget suppose `_body` which will occupy the remaining screen:
 
 ```dart
 CollapsibleSidebar(
   items: _items,
   avatarImg: _avatarImg,
   title: 'John Smith',
-  body: _body(size, context),
+  body: _body,
 )
 ```
 
@@ -47,66 +47,39 @@ CollapsibleSidebar(
 
 ```dart
 
-CarouselSlider(
-   items: items,
-   options: CarouselOptions(
-      height: 400,
-      aspectRatio: 16/9,
-      viewportFraction: 0.8,
-      initialPage: 0,
-      enableInfiniteScroll: true,
-      reverse: false,
-      autoPlay: true,
-      autoPlayInterval: Duration(seconds: 3),
-      autoPlayAnimationDuration: Duration(milliseconds: 800),
-      autoPlayCurve: Curves.fastOutSlowIn,
-      enlargeCenterPage: true,
-      onPageChanged: callbackFunction,
-      scrollDirection: Axis.horizontal,
-   )
- )
+CollapsibleSidebar(
+    items: _items,
+    title: 'Lorem Ipsum',
+    avatarImg: NetworkImage('https://www.w3schools.com/howto/img_avatar.png'),
+    body: _body,
+    height: double.infinity,
+    minWidth: 80,
+    maxWidth: 270,
+    borderRadius: 15,
+    iconSize: 40,
+    textSize: 20,
+    toggleButtonIcon: Icons.chevron_right,
+    backgroundColor: Color(0xff2B3138),
+    selectedIconBox: Color(0xff2F4047),
+    selectedIconColor: Color(0xff4AC6EA),
+    selectedTextColor: Color(0xffF3F7F7),
+    unselectedIconColor: Color(0xff6A7886),
+    unselectedTextColor: Color(0xffC0C7D0),
+    duration: Duration(milliseconds: 500),
+    curve: Curves.fastLinearToSlowEaseIn,
+    screenPadding: 4,
+    showCollapseButton: true,
+)
 ```
 
 ## Screenshot
+----------------------------------------------------------------
 
-Basic text carousel demo:
-
-![simple](screenshot/basic.gif)
-
-Basic image carousel demo:
-
-![image](screenshot/image.gif)
-
-A more complicated image carousel slider demo:
-
-![complicated image](screenshot/complicated-image.gif)
-
-Fullscreen image carousel slider demo:
-
-![fullscreen](screenshot/fullscreen.gif)
-
-Image carousel slider with custom indicator demo:
-
-![indicator](screenshot/indicator.gif)
-
-Custom `CarouselController` and manually control the pageview position demo:
-
-![manual](screenshot/manually.gif)
-
-Vertical carousel slider demo:
-
-![vertical](screenshot/vertical.gif)
-
-Simple on-demand image carousel slider, with image auto prefetch demo:
-
-![prefetch](screenshot/preload.gif)
-
-No infinite scroll demo:
-
-![noloop](screenshot/noloop.gif)
+![Collapsible Sidebar](screenshot/collapsible_sidebar.gif)
 
 All screenshots above can be found at the example project.
 
 ## License
+--------------------------------------------------------------
 
 MIT
