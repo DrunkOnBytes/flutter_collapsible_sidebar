@@ -45,7 +45,7 @@ CollapsibleSidebar(
 )
 ```
 
-## Params
+## Parameters
 
 ```dart
 
