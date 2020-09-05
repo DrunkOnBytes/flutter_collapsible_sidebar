@@ -75,7 +75,7 @@ CollapsibleSidebar(
 ## Screenshot
 ----------------------------------------------------------------
 
-![Collapsible Sidebar](screenshot/collapsible_sidebar.gif)
+<img src="https://github.com/RyuuKenshi/flutter_collapsible_sidebar/blob/master/screenshot/collapsible_sidebar.gif" width="250">
 
 All screenshots above can be found at the example project.
 
