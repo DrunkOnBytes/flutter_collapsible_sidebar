@@ -10,7 +10,7 @@ Its highlights:
 - Smooth Animation
 - Material UI
 
-![indicator](collapsible_sidebar.gif)
+![indicator](collapsible_sidebar1.gif)
 
 # Running
 
