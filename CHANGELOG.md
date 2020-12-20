@@ -1,3 +1,3 @@
-## [1.0.5] - 2020-09-10
+## [1.0.6] - 2020-12-20
 
 * A collapsible sidebar for Flutter apps implementing the Material Design.

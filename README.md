@@ -19,6 +19,14 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
+## 🌟 Version 1.0.6 ✨
+-------------------------------
+
+* Added ability to handle lists of icons
+* Added ability to apply bottom and top padding to List of icons
+* Added ability to choose direction of icon tiles (top/bottom) using ```fitItemsToBottom```
+* Added ability to give custom name to toggle button
+
 ## Live preview
 
 https://ryuukenshi.github.io/collapsible_sidebar
