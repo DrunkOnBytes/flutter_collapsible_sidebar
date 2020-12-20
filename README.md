@@ -27,7 +27,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^1.0.5` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^1.0.6` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -53,6 +53,7 @@ CollapsibleSidebar(
 CollapsibleSidebar(
     items: _items,
     title: 'Lorem Ipsum',
+    toggleTitle: 'Collapse', //title text of Toggle Button
     avatarImg: NetworkImage('https://www.w3schools.com/howto/img_avatar.png'),
     body: _body,
     height: double.infinity,
@@ -71,7 +72,10 @@ CollapsibleSidebar(
     duration: Duration(milliseconds: 500),
     curve: Curves.fastLinearToSlowEaseIn,
     screenPadding: 4,
-    showCollapseButton: true,
+    topPadding: 0, //space between image avatar and icons
+    bottomPadding: 0, //space between icons and toggle button
+    fitItemsToBottom: true, //fit all icons to the end of the space between image avatar and toggle button
+    showToggleButton: true,
 )
 ```
 

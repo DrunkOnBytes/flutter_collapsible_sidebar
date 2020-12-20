@@ -65,6 +65,36 @@ class _SidebarPageState extends State<SidebarPage> {
         icon: Icons.settings,
         onPressed: () => setState(() => _headline = 'Settings'),
       ),
+      CollapsibleItem(
+        text: 'Home',
+        icon: Icons.home,
+        onPressed: () => setState(() => _headline = 'Home'),
+      ),
+      CollapsibleItem(
+        text: 'Alarm',
+        icon: Icons.access_alarm,
+        onPressed: () => setState(() => _headline = 'Alarm'),
+      ),
+      CollapsibleItem(
+        text: 'Eco',
+        icon: Icons.eco,
+        onPressed: () => setState(() => _headline = 'Eco'),
+      ),
+      CollapsibleItem(
+        text: 'Event',
+        icon: Icons.event,
+        onPressed: () => setState(() => _headline = 'Event'),
+      ),
+      CollapsibleItem(
+        text: 'Email',
+        icon: Icons.email,
+        onPressed: () => setState(() => _headline = 'Email'),
+      ),
+      CollapsibleItem(
+        text: 'Face',
+        icon: Icons.face,
+        onPressed: () => setState(() => _headline = 'Face'),
+      ),
     ];
   }
 

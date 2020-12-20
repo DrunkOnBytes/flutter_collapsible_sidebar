@@ -15,6 +15,7 @@ class CollapsibleSidebar extends StatefulWidget {
   const CollapsibleSidebar({
     @required this.items,
     this.title = 'Lorem Ipsum',
+    this.toggleTitle = 'Collapse',
     this.avatarImg,
     this.height = double.infinity,
     this.minWidth = 80,
@@ -32,14 +33,17 @@ class CollapsibleSidebar extends StatefulWidget {
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.fastLinearToSlowEaseIn,
     this.screenPadding = 4,
-    this.showCollapseButton = true,
+    this.showToggleButton = true,
+    this.topPadding = 0,
+    this.bottomPadding = 0,
+    this.fitItemsToBottom = true,
     @required this.body,
   });
 
-  final String title;
+  final String title, toggleTitle;
   final Widget body;
   final avatarImg;
-  final bool showCollapseButton;
+  final bool showToggleButton, fitItemsToBottom;
   final List<CollapsibleItem> items;
   final double height,
       minWidth,
@@ -49,6 +53,8 @@ class CollapsibleSidebar extends StatefulWidget {
       textSize,
       padding = 10,
       itemPadding = 10,
+      topPadding,
+      bottomPadding,
       screenPadding;
   final IconData toggleButtonIcon;
   final Color backgroundColor,
@@ -166,26 +172,29 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _avatar,
-                  Spacer(
-                    flex: 10,
-                  ),
-                  Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      CollapsibleItemSelection(
-                        height: _maxOffsetY,
-                        offsetY: _maxOffsetY * _selectedItemIndex,
-                        color: widget.selectedIconBox,
-                        duration: widget.duration,
-                        curve: widget.curve,
+                  SizedBox(height: widget.topPadding,),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      reverse: widget.fitItemsToBottom,
+                      child: Stack(
+                        children: [
+                          CollapsibleItemSelection(
+                            height: _maxOffsetY,
+                            offsetY: _maxOffsetY * _selectedItemIndex,
+                            color: widget.selectedIconBox,
+                            duration: widget.duration,
+                            curve: widget.curve,
+                          ),
+                          Column(
+                            children: _items,
+                          ),
+                        ],
                       ),
-                      Column(children: _items),
-                    ],
+                    ),
                   ),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  widget.showCollapseButton
+                  SizedBox(height: widget.bottomPadding,),
+                  widget.showToggleButton
                       ? Divider(
                           color: widget.unselectedIconColor,
                           indent: 5,
@@ -195,7 +204,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                       : SizedBox(
                           height: 5,
                         ),
-                  widget.showCollapseButton
+                  widget.showToggleButton
                       ? _toggleButton
                       : SizedBox(
                           height: widget.iconSize,
@@ -270,7 +279,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
           color: widget.unselectedIconColor,
         ),
       ),
-      title: 'Collapse',
+      title: widget.toggleTitle,
       textStyle: _textStyle(widget.unselectedTextColor),
       onTap: () {
         _isCollapsed = !_isCollapsed;
