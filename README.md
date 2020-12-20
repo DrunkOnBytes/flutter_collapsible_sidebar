@@ -61,7 +61,6 @@ CollapsibleSidebar(
 CollapsibleSidebar(
     items: _items,
     title: 'Lorem Ipsum',
-    toggleTitle: 'Collapse', //title text of Toggle Button
     avatarImg: NetworkImage('https://www.w3schools.com/howto/img_avatar.png'),
     body: _body,
     height: double.infinity,
@@ -70,6 +69,7 @@ CollapsibleSidebar(
     borderRadius: 15,
     iconSize: 40,
     textSize: 20,
+    toggleTitle: 'Collapse', //title text of Toggle Button
     toggleButtonIcon: Icons.chevron_right,
     backgroundColor: Color(0xff2B3138),
     selectedIconBox: Color(0xff2F4047),
