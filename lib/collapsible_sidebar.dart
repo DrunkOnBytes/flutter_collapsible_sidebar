@@ -172,7 +172,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _avatar,
-                  SizedBox(height: widget.topPadding,),
+                  SizedBox(
+                    height: widget.topPadding,
+                  ),
                   Expanded(
                     child: SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
@@ -193,7 +195,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                       ),
                     ),
                   ),
-                  SizedBox(height: widget.bottomPadding,),
+                  SizedBox(
+                    height: widget.bottomPadding,
+                  ),
                   widget.showToggleButton
                       ? Divider(
                           color: widget.unselectedIconColor,
