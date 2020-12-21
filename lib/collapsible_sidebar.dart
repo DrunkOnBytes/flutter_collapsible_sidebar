@@ -36,7 +36,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.showToggleButton = true,
     this.topPadding = 0,
     this.bottomPadding = 0,
-    this.fitItemsToBottom = true,
+    this.fitItemsToBottom = false,
     @required this.body,
   });
 
