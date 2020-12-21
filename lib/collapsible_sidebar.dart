@@ -15,6 +15,9 @@ class CollapsibleSidebar extends StatefulWidget {
   const CollapsibleSidebar({
     @required this.items,
     this.title = 'Lorem Ipsum',
+    this.titleStyle,
+    this.textStyle,
+    this.toggleTitleStyle,
     this.toggleTitle = 'Collapse',
     this.avatarImg,
     this.height = double.infinity,
@@ -22,7 +25,6 @@ class CollapsibleSidebar extends StatefulWidget {
     this.maxWidth = 270,
     this.borderRadius = 15,
     this.iconSize = 40,
-    this.textSize = 20,
     this.toggleButtonIcon = Icons.chevron_right,
     this.backgroundColor = const Color(0xff2B3138),
     this.selectedIconBox = const Color(0xff2F4047),
@@ -41,6 +43,7 @@ class CollapsibleSidebar extends StatefulWidget {
   });
 
   final String title, toggleTitle;
+  final TextStyle titleStyle, textStyle, toggleTitleStyle;
   final Widget body;
   final avatarImg;
   final bool showToggleButton, fitItemsToBottom;
@@ -50,7 +53,6 @@ class CollapsibleSidebar extends StatefulWidget {
       maxWidth,
       borderRadius,
       iconSize,
-      textSize,
       padding = 10,
       itemPadding = 10,
       topPadding,
@@ -232,10 +234,10 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         avatarSize: widget.iconSize,
         name: widget.title,
         avatarImg: widget.avatarImg,
-        textStyle: _textStyle(widget.backgroundColor),
+        textStyle: _textStyle(widget.backgroundColor, widget.titleStyle),
       ),
       title: widget.title,
-      textStyle: _textStyle(widget.unselectedTextColor),
+      textStyle: _textStyle(widget.unselectedTextColor, widget.titleStyle),
     );
   }
 
@@ -258,7 +260,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
           color: iconColor,
         ),
         title: item.text,
-        textStyle: _textStyle(textColor),
+        textStyle: _textStyle(textColor, widget.textStyle),
         onTap: () {
           if (item.isSelected) return;
           item.onPressed();
@@ -284,7 +286,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         ),
       ),
       title: widget.toggleTitle,
-      textStyle: _textStyle(widget.unselectedTextColor),
+      textStyle:
+          _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
       onTap: () {
         _isCollapsed = !_isCollapsed;
         var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
@@ -297,12 +300,14 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
   double get _currAngle => -math.pi * _fraction;
   double get _offsetX => _maxOffsetX * _fraction;
 
-  TextStyle _textStyle(Color color) {
-    return TextStyle(
-      fontSize: widget.textSize,
-      fontWeight: FontWeight.w600,
-      color: color,
-    );
+  TextStyle _textStyle(Color color, TextStyle style) {
+    return style == null
+        ? TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: color,
+          )
+        : style.copyWith(color: color);
   }
 
   @override

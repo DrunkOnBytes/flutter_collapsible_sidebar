@@ -107,6 +107,14 @@ class _SidebarPageState extends State<SidebarPage> {
         avatarImg: _avatarImg,
         title: 'John Smith',
         body: _body(size, context),
+        backgroundColor: Colors.black,
+        selectedTextColor: Colors.limeAccent,
+        textStyle: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+        titleStyle: TextStyle(
+            fontSize: 20,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold),
+        toggleTitleStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
     );
   }

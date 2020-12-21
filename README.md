@@ -19,13 +19,16 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 1.0.7+1 ✨
+## 🌟 Version 1.0.7+2 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
 * Added ability to apply bottom and top padding to List of icons
-* Added ability to choose direction of icon tiles (top/bottom) using ```fitItemsToBottom```
+* Added ability to choose direction of icon tiles (top/bottom) using ```fitItemsToBottom``` property.
 * Added ability to give custom name to toggle button
+* Added ability to give custom Style to sidebar title using ```titleStyle``` property.
+* Added ability to give custom Style to collapsible items text using ```textStyle``` property.
+* Added ability to give custom Style to toggle button title using ```toggleTitleStyle``` property.
 
 ## Live preview
 
@@ -35,7 +38,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^1.0.7+1` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^1.0.7+2` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -61,6 +64,9 @@ CollapsibleSidebar(
 CollapsibleSidebar(
     items: _items,
     title: 'Lorem Ipsum',
+    textStyle: TextStyle(fontSize: 20), //custom style for sidebar title
+    titleStyle: TextStyle(fontSize: 20), //custom style for collapsible items text
+    toggleTitleStyle: TextStyle(fontSize: 20), //custom style for toggle button title
     avatarImg: NetworkImage('https://www.w3schools.com/howto/img_avatar.png'),
     body: _body,
     height: double.infinity,
@@ -68,7 +74,6 @@ CollapsibleSidebar(
     maxWidth: 270,
     borderRadius: 15,
     iconSize: 40,
-    textSize: 20,
     toggleTitle: 'Collapse', //title text of Toggle Button
     toggleButtonIcon: Icons.chevron_right,
     backgroundColor: Color(0xff2B3138),

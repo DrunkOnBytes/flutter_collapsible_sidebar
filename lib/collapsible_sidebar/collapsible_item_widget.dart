@@ -21,7 +21,8 @@ class CollapsibleItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
+      child: Container(
+        color: Colors.transparent,
         padding: EdgeInsets.all(padding),
         child: Stack(
           alignment: Alignment.centerLeft,
