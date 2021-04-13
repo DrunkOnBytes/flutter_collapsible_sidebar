@@ -19,7 +19,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 1.0.7+2 ✨
+## 🌟 Version 1.0.8 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
@@ -29,6 +29,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Added ability to give custom Style to sidebar title using ```titleStyle``` property.
 * Added ability to give custom Style to collapsible items text using ```textStyle``` property.
 * Added ability to give custom Style to toggle button title using ```toggleTitleStyle``` property.
+* Added support for Null-Safety. (By ⭐[José Luis](https://github.com/SalahAdDin)⭐)
 
 ## Live preview
 
