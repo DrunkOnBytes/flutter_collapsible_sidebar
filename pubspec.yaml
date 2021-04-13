@@ -1,12 +1,12 @@
 name: collapsible_sidebar
 description: A collapsible sidebar for Flutter apps implementing the Material Design.
-version: 1.0.8
+version: 2.0.0
 homepage: https://github.com/RyuuKenshi/flutter_collapsible_sidebar
 repository: https://github.com/RyuuKenshi/flutter_collapsible_sidebar
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:

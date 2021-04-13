@@ -19,7 +19,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 1.0.8 ✨
+## 🌟 Version 2.0.0 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
