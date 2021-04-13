@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class CollapsibleAvatar extends StatelessWidget {
   const CollapsibleAvatar({
-    @required this.avatarSize,
-    @required this.backgroundColor,
-    @required this.name,
+    required this.avatarSize,
+    required this.backgroundColor,
+    required this.name,
     this.avatarImg,
-    @required this.textStyle,
+    required this.textStyle,
   });
 
   final double avatarSize;

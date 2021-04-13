@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class CollapsibleItemWidget extends StatelessWidget {
   const CollapsibleItemWidget({
-    @required this.leading,
-    @required this.title,
-    @required this.textStyle,
-    @required this.padding,
-    @required this.offsetX,
-    @required this.scale,
+    required this.leading,
+    required this.title,
+    required this.textStyle,
+    required this.padding,
+    required this.offsetX,
+    required this.scale,
     this.onTap,
   });
 
@@ -15,7 +15,7 @@ class CollapsibleItemWidget extends StatelessWidget {
   final String title;
   final TextStyle textStyle;
   final double offsetX, scale, padding;
-  final Function onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
