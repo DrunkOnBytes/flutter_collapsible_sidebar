@@ -16,7 +16,7 @@ class CollapsibleSidebar extends StatefulWidget {
     required this.items,
     this.title = 'Lorem Ipsum',
     this.titleStyle,
-    this.titleBack = true,
+    this.titleBack = false,
     this.textStyle,
     this.toggleTitleStyle,
     this.toggleTitle = 'Collapse',
