@@ -39,7 +39,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.topPadding = 0,
     this.bottomPadding = 0,
     this.fitItemsToBottom = false,
-    required this.body,
+    required this.body, this.onTitleTap,
   });
 
   final String title, toggleTitle;
@@ -67,6 +67,8 @@ class CollapsibleSidebar extends StatefulWidget {
       unselectedTextColor;
   final Duration duration;
   final Curve curve;
+  final VoidCallback? onTitleTap;
+
   @override
   _CollapsibleSidebarState createState() => _CollapsibleSidebarState();
 }
@@ -239,6 +241,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
       ),
       title: widget.title,
       textStyle: _textStyle(widget.unselectedTextColor, widget.titleStyle),
+      onTap: widget.onTitleTap,
     );
   }
 

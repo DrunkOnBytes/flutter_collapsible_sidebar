@@ -29,7 +29,7 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
     return MouseRegion(
       onEnter: (event) {
         setState(() {
-          _underline = true;
+          _underline = true && widget.onTap != null;
         });
       },
       onExit: (event) {
