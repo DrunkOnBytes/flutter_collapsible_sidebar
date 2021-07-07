@@ -16,6 +16,7 @@ class CollapsibleSidebar extends StatefulWidget {
     required this.items,
     this.title = 'Lorem Ipsum',
     this.titleStyle,
+    this.titleBack = false,
     this.textStyle,
     this.toggleTitleStyle,
     this.toggleTitle = 'Collapse',
@@ -40,10 +41,12 @@ class CollapsibleSidebar extends StatefulWidget {
     this.bottomPadding = 0,
     this.fitItemsToBottom = false,
     required this.body,
+    this.onTitleTap,
   });
 
   final String title, toggleTitle;
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
+  final bool titleBack;
   final Widget body;
   final avatarImg;
   final bool showToggleButton, fitItemsToBottom;
@@ -67,18 +70,26 @@ class CollapsibleSidebar extends StatefulWidget {
       unselectedTextColor;
   final Duration duration;
   final Curve curve;
+  final VoidCallback? onTitleTap;
+
   @override
   _CollapsibleSidebarState createState() => _CollapsibleSidebarState();
 }
 
-class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTickerProviderStateMixin {
+class _CollapsibleSidebarState extends State<CollapsibleSidebar>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _widthAnimation;
   late CurvedAnimation _curvedAnimation;
   late double tempWidth;
 
   var _isCollapsed = true;
-  late double _currWidth, _delta, _delta1By4, _delta3by4, _maxOffsetX, _maxOffsetY;
+  late double _currWidth,
+      _delta,
+      _delta1By4,
+      _delta3by4,
+      _maxOffsetX,
+      _maxOffsetY;
   late int _selectedItemIndex;
 
   @override
@@ -146,7 +157,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
       setState(() => _isCollapsed = true);
     else {
       var threshold = _isCollapsed ? _delta1By4 : _delta3by4;
-      var endWidth = _currWidth - widget.minWidth > threshold ? tempWidth : widget.minWidth;
+      var endWidth = _currWidth - widget.minWidth > threshold
+          ? tempWidth
+          : widget.minWidth;
       _animateTo(endWidth);
     }
   }
@@ -230,15 +243,22 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
       padding: widget.itemPadding,
       offsetX: _offsetX,
       scale: _fraction,
-      leading: CollapsibleAvatar(
-        backgroundColor: widget.unselectedIconColor,
-        avatarSize: widget.iconSize,
-        name: widget.title,
-        avatarImg: widget.avatarImg,
-        textStyle: _textStyle(widget.backgroundColor, widget.titleStyle),
-      ),
+      leading: widget.titleBack
+          ? Icon(
+              Icons.chevron_left,
+              size: widget.iconSize,
+              color: widget.unselectedIconColor,
+            )
+          : CollapsibleAvatar(
+              backgroundColor: widget.unselectedIconColor,
+              avatarSize: widget.iconSize,
+              name: widget.title,
+              avatarImg: widget.avatarImg,
+              textStyle: _textStyle(widget.backgroundColor, widget.titleStyle),
+            ),
       title: widget.title,
       textStyle: _textStyle(widget.unselectedTextColor, widget.titleStyle),
+      onTap: widget.onTitleTap,
     );
   }
 
@@ -287,7 +307,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
         ),
       ),
       title: widget.toggleTitle,
-      textStyle: _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
+      textStyle:
+          _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
       onTap: () {
         _isCollapsed = !_isCollapsed;
         var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
