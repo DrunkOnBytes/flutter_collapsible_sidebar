@@ -68,7 +68,7 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
               widget.title,
               style: _underline
                   ? widget.textStyle
-                      .merge(TextStyle(decoration: TextDecoration.overline))
+                      .merge(TextStyle(decoration: TextDecoration.underline))
                   : widget.textStyle,
               softWrap: false,
               overflow: TextOverflow.fade,
