@@ -19,17 +19,20 @@ class CollapsibleItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        color: Colors.transparent,
-        padding: EdgeInsets.all(padding),
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            leading,
-            _title,
-          ],
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          color: Colors.transparent,
+          padding: EdgeInsets.all(padding),
+          child: Stack(
+            alignment: Alignment.centerLeft,
+            children: [
+              leading,
+              _title,
+            ],
+          ),
         ),
       ),
     );
