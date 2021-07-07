@@ -244,7 +244,11 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       offsetX: _offsetX,
       scale: _fraction,
       leading: widget.titleBack
-          ? Icon(Icons.chevron_left)
+          ? Icon(
+              Icons.chevron_left,
+              size: widget.iconSize,
+              color: widget.unselectedIconColor,
+            )
           : CollapsibleAvatar(
               backgroundColor: widget.unselectedIconColor,
               avatarSize: widget.iconSize,
