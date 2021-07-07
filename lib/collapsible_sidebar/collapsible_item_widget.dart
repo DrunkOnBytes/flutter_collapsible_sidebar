@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CollapsibleItemWidget extends StatelessWidget {
+class CollapsibleItemWidget extends StatefulWidget {
   const CollapsibleItemWidget({
     required this.leading,
     required this.title,
@@ -18,18 +18,35 @@ class CollapsibleItemWidget extends StatelessWidget {
   final VoidCallback? onTap;
 
   @override
+  _CollapsibleItemWidgetState createState() => _CollapsibleItemWidgetState();
+}
+
+class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
+  bool _underline = false;
+
+  @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          _underline = true;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          _underline = false;
+        });
+      },
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: onTap,
+        onTap: widget.onTap,
         child: Container(
           color: Colors.transparent,
-          padding: EdgeInsets.all(padding),
+          padding: EdgeInsets.all(widget.padding),
           child: Stack(
             alignment: Alignment.centerLeft,
             children: [
-              leading,
+              widget.leading,
               _title,
             ],
           ),
@@ -40,16 +57,19 @@ class CollapsibleItemWidget extends StatelessWidget {
 
   Widget get _title {
     return Opacity(
-      opacity: scale,
+      opacity: widget.scale,
       child: Transform.translate(
-        offset: Offset(offsetX, 0),
+        offset: Offset(widget.offsetX, 0),
         child: Transform.scale(
-          scale: scale,
+          scale: widget.scale,
           child: SizedBox(
             width: double.infinity,
             child: Text(
-              title,
-              style: textStyle,
+              widget.title,
+              style: _underline
+                  ? widget.textStyle
+                      .merge(TextStyle(decoration: TextDecoration.overline))
+                  : widget.textStyle,
               softWrap: false,
               overflow: TextOverflow.fade,
             ),
