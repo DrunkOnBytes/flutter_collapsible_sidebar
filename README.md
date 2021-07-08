@@ -19,7 +19,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 2.0.0 ✨
+## 🌟 Version 2.0.1 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
@@ -30,6 +30,9 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Added ability to give custom Style to collapsible items text using ```textStyle``` property.
 * Added ability to give custom Style to toggle button title using ```toggleTitleStyle``` property.
 * Added support for Null-Safety. (By ⭐[José Luis](https://github.com/SalahAdDin)⭐)
+* Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
+* Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
+* Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 
 ## Live preview
 
@@ -39,7 +42,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^1.0.7+2` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.1` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -65,6 +68,13 @@ CollapsibleSidebar(
 CollapsibleSidebar(
     items: _items,
     title: 'Lorem Ipsum',
+    titleBack: false,  //false by default, set to 'true' to use a back icon instead of avatar picture
+    titleBackIcon: Icons.arrow_back, //the back icon is 'arrow_back' by default (customizable)
+    onTitleTap: () {  //custom callback function called when title avatar or back icon is pressed
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
+    },
+    onHoverPointer: SystemMouseCursors.click, //the default hover mouse pointer is set to 'click' type by default (customizable)
     textStyle: TextStyle(fontSize: 20), //custom style for sidebar title
     titleStyle: TextStyle(fontSize: 20), //custom style for collapsible items text
     toggleTitleStyle: TextStyle(fontSize: 20), //custom style for toggle button title

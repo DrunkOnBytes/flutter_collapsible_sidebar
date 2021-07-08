@@ -2,12 +2,12 @@ library collapsible_sidebar;
 
 import 'dart:math' as math show pi;
 
-import 'package:flutter/material.dart';
+import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_avatar.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_container.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_item.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_item_selection.dart';
-import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_avatar.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_item_widget.dart';
+import 'package:flutter/material.dart';
 
 export 'package:collapsible_sidebar/collapsible_sidebar/collapsible_item.dart';
 
@@ -17,6 +17,8 @@ class CollapsibleSidebar extends StatefulWidget {
     this.title = 'Lorem Ipsum',
     this.titleStyle,
     this.titleBack = false,
+    this.titleBackIcon = Icons.arrow_back,
+    this.onHoverPointer = SystemMouseCursors.click,
     this.textStyle,
     this.toggleTitleStyle,
     this.toggleTitle = 'Collapse',
@@ -45,8 +47,10 @@ class CollapsibleSidebar extends StatefulWidget {
   });
 
   final String title, toggleTitle;
+  final MouseCursor onHoverPointer;
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
   final bool titleBack;
+  final IconData titleBackIcon;
   final Widget body;
   final avatarImg;
   final bool showToggleButton, fitItemsToBottom;
@@ -240,12 +244,13 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
   Widget get _avatar {
     return CollapsibleItemWidget(
+      onHoverPointer: widget.onHoverPointer,
       padding: widget.itemPadding,
       offsetX: _offsetX,
       scale: _fraction,
       leading: widget.titleBack
           ? Icon(
-              Icons.chevron_left,
+              widget.titleBackIcon,
               size: widget.iconSize,
               color: widget.unselectedIconColor,
             )
@@ -272,6 +277,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         textColor = widget.selectedTextColor;
       }
       return CollapsibleItemWidget(
+        onHoverPointer: widget.onHoverPointer,
         padding: widget.itemPadding,
         offsetX: _offsetX,
         scale: _fraction,
@@ -295,6 +301,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
   Widget get _toggleButton {
     return CollapsibleItemWidget(
+      onHoverPointer: widget.onHoverPointer,
       padding: widget.itemPadding,
       offsetX: _offsetX,
       scale: _fraction,

@@ -1,8 +1,7 @@
 import 'dart:math' as math show pi;
 
-import 'package:flutter/material.dart';
-
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -106,6 +105,10 @@ class _SidebarPageState extends State<SidebarPage> {
         items: _items,
         avatarImg: _avatarImg,
         title: 'John Smith',
+        onTitleTap: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
+        },
         body: _body(size, context),
         backgroundColor: Colors.black,
         selectedTextColor: Colors.limeAccent,
