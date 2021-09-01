@@ -102,7 +102,7 @@ class _SidebarPageState extends State<SidebarPage> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: CollapsibleSidebar(
-        isCollapsed: false,
+        isCollapsed: true,
         items: _items,
         avatarImg: _avatarImg,
         title: 'John Smith',
