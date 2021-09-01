@@ -19,7 +19,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 2.0.1 ✨
+## 🌟 Version 2.0.1+1 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
@@ -33,6 +33,8 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 * Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 * Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
+* Added ability to set Sidebar Collapsed or Expanded initially by changing the `isCollapsed` parameter.
+* Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
 
 ## Live preview
 
@@ -42,7 +44,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.1` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.1+1` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -66,6 +68,7 @@ CollapsibleSidebar(
 ```dart
 
 CollapsibleSidebar(
+    isCollapsed: true, //true by default, set to 'false' to have the full sidebar open on initially loading the app
     items: _items,
     title: 'Lorem Ipsum',
     titleBack: false,  //false by default, set to 'true' to use a back icon instead of avatar picture
@@ -100,6 +103,13 @@ CollapsibleSidebar(
     bottomPadding: 0, //space between icons and toggle button
     fitItemsToBottom: true, //fit all icons to the end of the space between image avatar and toggle button
     showToggleButton: true,
+    sidebarBoxShadow: [BoxShadow(
+                            color: Colors.blue,
+                            blurRadius: 10,
+                            spreadRadius: 0.01,
+                            offset: Offset(3, 3),
+                          ),],
+     //sidebarBoxShadow accepts a list<BoxShadow> just like the "BoxDecoration" parameter of a "Container". By default a black shadow is applied.
 )
 ```
 

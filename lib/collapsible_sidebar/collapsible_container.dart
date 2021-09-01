@@ -8,12 +8,13 @@ class CollapsibleContainer extends StatelessWidget {
     required this.borderRadius,
     required this.color,
     required this.child,
+    required this.sidebarBoxShadow
   });
 
   final double height, width, padding, borderRadius;
   final Color color;
   final Widget child;
-
+  final List<BoxShadow> sidebarBoxShadow;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,14 +24,7 @@ class CollapsibleContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: color,
-        boxShadow: [
-          BoxShadow(
-            color: color,
-            blurRadius: 10,
-            spreadRadius: 0.01,
-            offset: Offset(3, 3),
-          ),
-        ],
+        boxShadow: sidebarBoxShadow,
       ),
       child: child,
     );

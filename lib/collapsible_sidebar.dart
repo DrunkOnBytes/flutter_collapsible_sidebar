@@ -44,6 +44,13 @@ class CollapsibleSidebar extends StatefulWidget {
     this.fitItemsToBottom = false,
     required this.body,
     this.onTitleTap,
+    this.isCollapsed = true,
+    this.sidebarBoxShadow = const [BoxShadow(
+      color: Colors.blue,
+      blurRadius: 10,
+      spreadRadius: 0.01,
+      offset: Offset(3, 3),
+    ),],
   });
 
   final String title, toggleTitle;
@@ -53,7 +60,7 @@ class CollapsibleSidebar extends StatefulWidget {
   final IconData titleBackIcon;
   final Widget body;
   final avatarImg;
-  final bool showToggleButton, fitItemsToBottom;
+  final bool showToggleButton, fitItemsToBottom, isCollapsed;
   final List<CollapsibleItem> items;
   final double height,
       minWidth,
@@ -75,6 +82,7 @@ class CollapsibleSidebar extends StatefulWidget {
   final Duration duration;
   final Curve curve;
   final VoidCallback? onTitleTap;
+  final List<BoxShadow> sidebarBoxShadow;
 
   @override
   _CollapsibleSidebarState createState() => _CollapsibleSidebarState();
@@ -87,7 +95,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
   late CurvedAnimation _curvedAnimation;
   late double tempWidth;
 
-  var _isCollapsed = true;
+  var _isCollapsed;
   late double _currWidth,
       _delta,
       _delta1By4,
@@ -131,6 +139,10 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       if (_controller.isCompleted) _isCollapsed = _currWidth == widget.minWidth;
       setState(() {});
     });
+
+    _isCollapsed = widget.isCollapsed;
+    var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
+    _animateTo(endWidth);
   }
 
   void _animateTo(double endWidth) {
@@ -188,6 +200,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
               padding: widget.padding,
               borderRadius: widget.borderRadius,
               color: widget.backgroundColor,
+              sidebarBoxShadow: widget.sidebarBoxShadow,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

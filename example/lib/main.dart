@@ -26,8 +26,8 @@ class SidebarPage extends StatefulWidget {
 class _SidebarPageState extends State<SidebarPage> {
   List<CollapsibleItem> _items;
   String _headline;
-  NetworkImage _avatarImg =
-      NetworkImage('https://www.w3schools.com/howto/img_avatar.png');
+  AssetImage _avatarImg =
+      AssetImage('assets/man.png');
 
   @override
   void initState() {
@@ -45,8 +45,8 @@ class _SidebarPageState extends State<SidebarPage> {
         isSelected: true,
       ),
       CollapsibleItem(
-        text: 'Errors',
-        icon: Icons.cancel,
+        text: 'Ice-Cream',
+        icon: Icons.icecream,
         onPressed: () => setState(() => _headline = 'Errors'),
       ),
       CollapsibleItem(
@@ -102,6 +102,7 @@ class _SidebarPageState extends State<SidebarPage> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: CollapsibleSidebar(
+        isCollapsed: false,
         items: _items,
         avatarImg: _avatarImg,
         title: 'John Smith',
@@ -118,6 +119,20 @@ class _SidebarPageState extends State<SidebarPage> {
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.bold),
         toggleTitleStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        sidebarBoxShadow: [
+          BoxShadow(
+            color: Colors.indigo,
+            blurRadius: 20,
+            spreadRadius: 0.01,
+            offset: Offset(3, 3),
+          ),
+          BoxShadow(
+            color: Colors.green,
+            blurRadius: 50,
+            spreadRadius: 0.01,
+            offset: Offset(3, 3),
+          ),
+        ],
       ),
     );
   }
