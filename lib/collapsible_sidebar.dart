@@ -144,6 +144,15 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
     var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
     _animateTo(endWidth);
   }
+  
+   @override
+  void didUpdateWidget(covariant CollapsibleSidebar oldWidget) {
+    if (widget.isCollapsed != oldWidget.isCollapsed) {
+      _isCollapsed = widget.isCollapsed;
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
 
   void _animateTo(double endWidth) {
     _widthAnimation = Tween<double>(
