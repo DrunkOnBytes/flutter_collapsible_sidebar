@@ -21,7 +21,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 2.0.1+2 ✨
+## 🌟 Version 2.0.2 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
@@ -35,7 +35,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 * Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 * Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-* Added ability to set Sidebar Collapsed or Expanded initially by changing the `isCollapsed` parameter.
+* Added ability to set Sidebar Collapsed or Expanded according to a condition using the `isCollapsed` parameter. (By ⭐[Taylan YILDIZ](https://github.com/taylanyildiz)⭐)
 * Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
 
 ## Live preview
@@ -46,7 +46,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.1+2` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.2` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -65,7 +65,7 @@ CollapsibleSidebar(
 )
 ```
 
-Also you can add `isCollapsed` condition
+Also you can use the `isCollapsed` condition depending how you want the state of the sidebar to change (collapsed/expanded)
 for exmaple [size.width]
 
 ```dart
