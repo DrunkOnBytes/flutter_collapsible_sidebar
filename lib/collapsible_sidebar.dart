@@ -13,7 +13,9 @@ export 'package:collapsible_sidebar/collapsible_sidebar/collapsible_item.dart';
 
 class CollapsibleSidebar extends StatefulWidget {
   const CollapsibleSidebar({
+    Key? key,
     required this.items,
+    required this.body,
     this.title = 'Lorem Ipsum',
     this.titleStyle,
     this.titleBack = false,
@@ -42,16 +44,17 @@ class CollapsibleSidebar extends StatefulWidget {
     this.topPadding = 0,
     this.bottomPadding = 0,
     this.fitItemsToBottom = false,
-    required this.body,
     this.onTitleTap,
     this.isCollapsed = true,
-    this.sidebarBoxShadow = const [BoxShadow(
-      color: Colors.blue,
-      blurRadius: 10,
-      spreadRadius: 0.01,
-      offset: Offset(3, 3),
-    ),],
-  });
+    this.sidebarBoxShadow = const [
+      BoxShadow(
+        color: Colors.blue,
+        blurRadius: 10,
+        spreadRadius: 0.01,
+        offset: Offset(3, 3),
+      ),
+    ],
+  }) : super(key: key);
 
   final String title, toggleTitle;
   final MouseCursor onHoverPointer;
@@ -140,6 +143,29 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       setState(() {});
     });
 
+    _isCollapsed = widget.isCollapsed;
+    var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
+    _animateTo(endWidth);
+  }
+
+  @override
+  void didUpdateWidget(covariant CollapsibleSidebar oldWidget) {
+    if (widget.isCollapsed != oldWidget.isCollapsed) {
+      _listenCollapseChange();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  /// Allows you to change [widget.isCollapsed] by keeping it bound
+  /// to a variable other than click the button
+  ///
+  /// `example`: change the [widget.isCollapsed] by screen size.
+  ///
+  /// CollapsibleSidebar(
+  ///   ...
+  ///   isCollapsed: MediaQuery.of(context).size.width <= 800,
+  /// )
+  void _listenCollapseChange() {
     _isCollapsed = widget.isCollapsed;
     var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
     _animateTo(endWidth);

@@ -5,6 +5,8 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 
 ![indicator](screenshot/collapsible_sidebar.gif)
 
+![responsive-ui](https://user-images.githubusercontent.com/37551474/182013560-741723a2-64c3-40e2-9b6c-c640e7fcf1ba.gif)
+
 
 ## Features 
 
@@ -56,6 +58,19 @@ Simply create a `CollapsibleSidebar` widget and a list of `CollapsibleItems` sup
 
 ```dart
 CollapsibleSidebar(
+  items: _items,
+  avatarImg: _avatarImg,
+  title: 'John Smith',
+  body: _body,
+)
+```
+
+Also you can add `isCollapsed` condition
+for exmaple [size.width]
+
+```dart
+CollapsibleSidebar(
+  isCollapsed: MediaQuery.of(context).size.width <= 800,
   items: _items,
   avatarImg: _avatarImg,
   title: 'John Smith',

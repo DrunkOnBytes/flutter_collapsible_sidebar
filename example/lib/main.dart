@@ -26,8 +26,7 @@ class SidebarPage extends StatefulWidget {
 class _SidebarPageState extends State<SidebarPage> {
   List<CollapsibleItem> _items;
   String _headline;
-  AssetImage _avatarImg =
-      AssetImage('assets/man.png');
+  AssetImage _avatarImg = AssetImage('assets/man.png');
 
   @override
   void initState() {
@@ -102,7 +101,7 @@ class _SidebarPageState extends State<SidebarPage> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: CollapsibleSidebar(
-        isCollapsed: true,
+        isCollapsed: MediaQuery.of(context).size.width <= 800,
         items: _items,
         avatarImg: _avatarImg,
         title: 'John Smith',
