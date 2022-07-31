@@ -83,7 +83,7 @@ CollapsibleSidebar(
 ```dart
 
 CollapsibleSidebar(
-    isCollapsed: true, //true by default, set to 'false' to have the full sidebar open on initially loading the app
+    isCollapsed: true, //true by default, can set condition to control state of sidebar (collapsed/expanded) on some property change
     items: _items,
     title: 'Lorem Ipsum',
     titleBack: false,  //false by default, set to 'true' to use a back icon instead of avatar picture
