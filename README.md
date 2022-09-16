@@ -21,7 +21,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 2.0.2+1 ✨
+## 🌟 Version 2.0.2+2 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
@@ -46,7 +46,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.2+1` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.2+2` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
