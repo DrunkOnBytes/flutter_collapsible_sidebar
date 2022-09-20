@@ -46,6 +46,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
+    this.showTitle = true,
     this.sidebarBoxShadow = const [
       BoxShadow(
         color: Colors.blue,
@@ -63,6 +64,7 @@ class CollapsibleSidebar extends StatefulWidget {
   final IconData titleBackIcon;
   final Widget body;
   final avatarImg;
+  final showTitle;
   final bool showToggleButton, fitItemsToBottom, isCollapsed;
   final List<CollapsibleItem> items;
   final double height,
@@ -230,7 +232,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _avatar,
+                  widget.showTitle ? _avatar : Container(),
                   SizedBox(
                     height: widget.topPadding,
                   ),
