@@ -37,7 +37,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 * Added ability to set Sidebar Collapsed or Expanded according to a condition using the `isCollapsed` parameter. (By ⭐[Taylan YILDIZ](https://github.com/taylanyildiz)⭐)
 * Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
-* Added ability to hide Title and Avatar Image. (By *[ShaunAtSense](https://github.com/ShaunAtSense)*)
+* Added ability to hide Title and Avatar Image. (By ⭐[ShaunAtSense](https://github.com/ShaunAtSense)⭐)
 
 ## Live preview
 
