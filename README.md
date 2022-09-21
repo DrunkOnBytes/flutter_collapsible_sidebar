@@ -21,7 +21,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Flutter web
 * Flutter desktop
 
-## 🌟 Version 2.0.2+2 ✨
+## 🌟 Version 2.0.2+3 ✨
 -------------------------------
 
 * Added ability to handle lists of icons
@@ -37,6 +37,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 * Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 * Added ability to set Sidebar Collapsed or Expanded according to a condition using the `isCollapsed` parameter. (By ⭐[Taylan YILDIZ](https://github.com/taylanyildiz)⭐)
 * Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
+* Added ability to hide Title and Avatar Image. (By *[ShaunAtSense](https://github.com/ShaunAtSense)*)
 
 ## Live preview
 
@@ -46,7 +47,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.2+2` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.2+3` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -85,6 +86,7 @@ CollapsibleSidebar(
 CollapsibleSidebar(
     isCollapsed: true, //true by default, can set condition to control state of sidebar (collapsed/expanded) on some property change
     items: _items,
+    showTitle: true, //true by default, can set to false to hide title and avatar Image
     title: 'Lorem Ipsum',
     titleBack: false,  //false by default, set to 'true' to use a back icon instead of avatar picture
     titleBackIcon: Icons.arrow_back, //the back icon is 'arrow_back' by default (customizable)
