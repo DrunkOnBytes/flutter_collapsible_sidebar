@@ -210,75 +210,96 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+
+    Widget sidebar = Padding(
+      padding: EdgeInsets.all(widget.screenPadding),
+      child: GestureDetector(
+        onHorizontalDragUpdate: _onHorizontalDragUpdate,
+        onHorizontalDragEnd: _onHorizontalDragEnd,
+        child: CollapsibleContainer(
+          height: widget.height,
+          width: _currWidth,
+          padding: widget.padding,
+          borderRadius: widget.borderRadius,
+          color: widget.backgroundColor,
+          sidebarBoxShadow: widget.sidebarBoxShadow,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              widget.showTitle ? _avatar : const SizedBox(),
+              SizedBox(
+                height: widget.topPadding,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  reverse: widget.fitItemsToBottom,
+                  child: Stack(
+                    children: [
+                      CollapsibleItemSelection(
+                        height: _maxOffsetY,
+                        offsetY: _maxOffsetY * _selectedItemIndex,
+                        color: widget.selectedIconBox,
+                        duration: widget.duration,
+                        curve: widget.curve,
+                      ),
+                      Column(
+                        children: _items,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: widget.bottomPadding,
+              ),
+              widget.showToggleButton
+                  ? Divider(
+                color: widget.unselectedIconColor,
+                indent: 5,
+                endIndent: 5,
+                thickness: 1,
+              )
+                  : SizedBox(
+                height: 5,
+              ),
+              widget.showToggleButton
+                  ? _toggleButton
+                  : SizedBox(
+                height: widget.iconSize,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    return _isCollapsed
+        ? Stack(
       alignment: Alignment.topLeft,
       children: [
         Padding(
           padding: EdgeInsets.only(left: widget.minWidth * 1.1),
           child: widget.body,
         ),
+        sidebar,
+      ],
+    )
+        : Stack(
+      alignment: Alignment.topLeft,
+      children: [
         Padding(
-          padding: EdgeInsets.all(widget.screenPadding),
-          child: GestureDetector(
-            onHorizontalDragUpdate: _onHorizontalDragUpdate,
-            onHorizontalDragEnd: _onHorizontalDragEnd,
-            child: CollapsibleContainer(
-              height: widget.height,
-              width: _currWidth,
-              padding: widget.padding,
-              borderRadius: widget.borderRadius,
-              color: widget.backgroundColor,
-              sidebarBoxShadow: widget.sidebarBoxShadow,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.showTitle ? _avatar : const SizedBox(),
-                  SizedBox(
-                    height: widget.topPadding,
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      reverse: widget.fitItemsToBottom,
-                      child: Stack(
-                        children: [
-                          CollapsibleItemSelection(
-                            height: _maxOffsetY,
-                            offsetY: _maxOffsetY * _selectedItemIndex,
-                            color: widget.selectedIconBox,
-                            duration: widget.duration,
-                            curve: widget.curve,
-                          ),
-                          Column(
-                            children: _items,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: widget.bottomPadding,
-                  ),
-                  widget.showToggleButton
-                      ? Divider(
-                          color: widget.unselectedIconColor,
-                          indent: 5,
-                          endIndent: 5,
-                          thickness: 1,
-                        )
-                      : SizedBox(
-                          height: 5,
-                        ),
-                  widget.showToggleButton
-                      ? _toggleButton
-                      : SizedBox(
-                          height: widget.iconSize,
-                        ),
-                ],
-              ),
-            ),
-          ),
+          padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+          child: widget.body,
         ),
+        GestureDetector(
+          onTap: () {
+            _isCollapsed = true;
+            _animateTo(widget.minWidth);
+          },
+          child: Container(color: Colors.transparent,),
+        ),
+        sidebar,
       ],
     );
   }
