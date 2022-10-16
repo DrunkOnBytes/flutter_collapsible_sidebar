@@ -114,6 +114,13 @@ CollapsibleSidebar(
 | `showToggleButton` | bool | true | flag to enable/disable showing the toggle button |
 | `sidebarBoxShadow` | `List<BoxShadow>` | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |
 
+## Contributing
+# A big thank you to all the contributors without whom this project would be impossible to maintain and enhance. 👏👏👏
+
+<a href="https://github.com/DrunkOnBytes/flutter_collapsible_sidebar/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=DrunkOnBytes/flutter_collapsible_sidebar&max=100&anon=1" />
+</a>
+
 
 ## License
 
