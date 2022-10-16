@@ -76,60 +76,44 @@ CollapsibleSidebar(
 
 ## Parameters (customizable attributes)
 
-| Name | Default Value | Description |
-| :---: | :---: | :---: |
-| `isCollapsed` | true  | can set condition to control state of sidebar (collapsed/expanded) on some property change |
-| `collapseOnBodyTap` | true  | flag to enable/disable tapping on the body of the app (area other than the sidebar) to collapse the sidebar |
+| Name | Data Type | Default Value | Description |
+| :---: | :---: | :---: | :---: |
+| `isCollapsed` | bool | true | can set condition to control state of sidebar (collapsed/expanded) on some property change |
+| `collapseOnBodyTap` | bool | true | flag to enable/disable tapping on the body of the app (area other than the sidebar) to collapse the sidebar |
+| `items` | List<CollapsibleItems> | --- | List of `CollapsibleItems` |
+| `showTitle` | bool | true | can set to false to hide title and avatar Image |
+| `title` | String | --- | Title of the Collapsible Sidebar |
+| `titleBack` | bool | false | set to 'true' to use a back icon instead of avatar picture |
+| `titleBackIcon` | Icons | Icons.arrow_back | the back icon is 'arrow_back' by default (customizable) |
+| `onTitleTap` | Function | --- | custom callback function called when title avatar or back icon is pressed |
+| `onHoverPointer` | SystemMouseCursors | SystemMouseCursors.click | the default hover mouse pointer is set to 'click' type by default (customizable) |
+| `textStyle` | TextStyle | --- | custom style for sidebar title |
+| `titleStyle` | TextStyle | --- | custom style for collapsible items text |
+| `toggleTitleStyle` | TextStyle | --- | custom style for toggle button title |
+| `avatarImg` | Image | --- | Image to be displayed |
+| `body` | Widget | --- | The main body of the app (the underlying main widget other than the sidebar) |
+| `height` | double | double.infinity | height of the Sidebar |
+| `minWidth` | double | 80 | Width of Sidebar when Collapsed |
+| `maxWidth` | double | 270 |  Width of Sidebar when Expanded |
+| `borderRadius` | double |15 | Radius of the borders |
+| `iconSize` | double | 40 | Size of the icons |
+| `toggleTitle` | String | 'Collapse' | title text of Toggle Button |
+| `toggleButtonIcon` | Icons | Icons.chevron_right | Icon of the Toggle button |
+| `backgroundColor` | Color | Color(0xff2B3138) | The background color |
+| `selectedIconBox` | Color | Color(0xff2F4047) | Color of Icon Box when selected |
+| `selectedIconColor` | Color | Color(0xff4AC6EA) | Color of Icon when selected |
+| `selectedTextColor` | Color | Color(0xffF3F7F7) | Color of text when selected |
+| `unselectedIconColor` | Color | Color(0xff6A7886) | Color of Icon when not selected |
+| `unselectedTextColor` | Color | Color(0xffC0C7D0) | Color of text when not selected |
+| `duration` | Duration | Duration(milliseconds: 500) | Animation duration for collapsed->expanded & vice-versa |
+| `curve` | Curves | Curves.fastLinearToSlowEaseIn | Animation curve for collapsed->expanded & vice-versa |
+| `screenPadding` | double | 4 | Padding to the screen |
+| `topPadding` | double | 0 | space between image avatar and icons |
+| `bottomPadding` | double | 0 | space between icons and toggle button |
+| `fitItemsToBottom` | bool | true | fit all icons to the end of the space between image avatar and toggle button|
+| `showToggleButton` | bool | true | flag to enable/disable showing the toggle button |
+| `sidebarBoxShadow` | list<BoxShadow> | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |
 
-```dart
-
-CollapsibleSidebar(
-    isCollapsed: true, //true by default, can set condition to control state of sidebar (collapsed/expanded) on some property change
-    collapseOnBodyTap: true, //true by default, flag to enable/disable tapping on the body of the app (area other than the sidebar) to collapse the sidebar
-    items: _items,
-    showTitle: true, //true by default, can set to false to hide title and avatar Image
-    title: 'Lorem Ipsum',
-    titleBack: false,  //false by default, set to 'true' to use a back icon instead of avatar picture
-    titleBackIcon: Icons.arrow_back, //the back icon is 'arrow_back' by default (customizable)
-    onTitleTap: () {  //custom callback function called when title avatar or back icon is pressed
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));
-    },
-    onHoverPointer: SystemMouseCursors.click, //the default hover mouse pointer is set to 'click' type by default (customizable)
-    textStyle: TextStyle(fontSize: 20), //custom style for sidebar title
-    titleStyle: TextStyle(fontSize: 20), //custom style for collapsible items text
-    toggleTitleStyle: TextStyle(fontSize: 20), //custom style for toggle button title
-    avatarImg: NetworkImage('https://www.w3schools.com/howto/img_avatar.png'),
-    body: _body,
-    height: double.infinity,
-    minWidth: 80,
-    maxWidth: 270,
-    borderRadius: 15,
-    iconSize: 40,
-    toggleTitle: 'Collapse', //title text of Toggle Button
-    toggleButtonIcon: Icons.chevron_right,
-    backgroundColor: Color(0xff2B3138),
-    selectedIconBox: Color(0xff2F4047),
-    selectedIconColor: Color(0xff4AC6EA),
-    selectedTextColor: Color(0xffF3F7F7),
-    unselectedIconColor: Color(0xff6A7886),
-    unselectedTextColor: Color(0xffC0C7D0),
-    duration: Duration(milliseconds: 500),
-    curve: Curves.fastLinearToSlowEaseIn,
-    screenPadding: 4,
-    topPadding: 0, //space between image avatar and icons
-    bottomPadding: 0, //space between icons and toggle button
-    fitItemsToBottom: true, //fit all icons to the end of the space between image avatar and toggle button
-    showToggleButton: true,
-    sidebarBoxShadow: [BoxShadow(
-                            color: Colors.blue,
-                            blurRadius: 10,
-                            spreadRadius: 0.01,
-                            offset: Offset(3, 3),
-                          ),],
-     //sidebarBoxShadow accepts a list<BoxShadow> just like the "BoxDecoration" parameter of a "Container". By default a black shadow is applied.
-)
-```
 
 ## License
 
