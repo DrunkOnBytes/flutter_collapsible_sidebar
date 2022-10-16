@@ -80,7 +80,7 @@ CollapsibleSidebar(
 | :---: | :---: | :---: | :---: |
 | `isCollapsed` | bool | true | can set condition to control state of sidebar (collapsed/expanded) on some property change |
 | `collapseOnBodyTap` | bool | true | flag to enable/disable tapping on the body of the app (area other than the sidebar) to collapse the sidebar |
-| `items` | List<CollapsibleItems> | --- | List of `CollapsibleItems` |
+| `items` | `List<CollapsibleItems>` | --- | List of `CollapsibleItems` |
 | `showTitle` | bool | true | can set to false to hide title and avatar Image |
 | `title` | String | --- | Title of the Collapsible Sidebar |
 | `titleBack` | bool | false | set to 'true' to use a back icon instead of avatar picture |
@@ -112,7 +112,7 @@ CollapsibleSidebar(
 | `bottomPadding` | double | 0 | space between icons and toggle button |
 | `fitItemsToBottom` | bool | true | fit all icons to the end of the space between image avatar and toggle button|
 | `showToggleButton` | bool | true | flag to enable/disable showing the toggle button |
-| `sidebarBoxShadow` | list<BoxShadow> | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |
+| `sidebarBoxShadow` | `List<BoxShadow>` | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |
 
 
 ## License
