@@ -46,14 +46,51 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 
 ## How to use
 
-Simply create a `CollapsibleSidebar` widget and a list of `CollapsibleItems` suppose `_items`. Finally add the required parameters to `CollapsibleSidebar` and a `body` widget suppose `_body` which will occupy the remaining screen:
+1. Create a list of `CollapsibleItems` named `_items` (or whatever fancy name you like)
+
+```dart
+List<CollapsibleItem> get _items {
+    return [
+      CollapsibleItem(
+        text: 'Dashboard',
+        icon: Icons.assessment,
+        onPressed: () => setState(() => _headline = 'DashBoard'),
+        isSelected: true,
+      ),
+      CollapsibleItem(
+        text: 'Ice-Cream',
+        icon: Icons.icecream,
+        onPressed: () => setState(() => _headline = 'Errors'),
+      ),
+      CollapsibleItem(
+        text: 'Search',
+        icon: Icons.search,
+        onPressed: () => setState(() => _headline = 'Search'),
+      ),
+    ];
+  }
+```
+2. Define the body of the app (the widget where the main working of the app will be) and name it say `_body`.
+
+```dart
+Widget _body(Size size, BuildContext context) {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      color: Colors.blueGrey[50],
+      child: .........
+    );
+  }
+ ```
+
+3. Finally completely define the `CollapsibleSidebar` widget by adding the list of `CollapsibleItems` named `_items`, the body of the app named `_body` and the customizable parameters as needed:
 
 ```dart
 CollapsibleSidebar(
   items: _items,
   avatarImg: _avatarImg,
   title: 'John Smith',
-  body: _body,
+  body: _body(size, context),
 )
 ```
 
@@ -66,7 +103,7 @@ CollapsibleSidebar(
   items: _items,
   avatarImg: _avatarImg,
   title: 'John Smith',
-  body: _body,
+  body: _body(size, context),
 )
 ```
 
