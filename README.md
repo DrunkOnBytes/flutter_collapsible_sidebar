@@ -23,16 +23,12 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 - Flutter web
 - Flutter desktop
 
+## Contributing
+### A big thank you to all the contributors without whom this project would be impossible to maintain and enhance. 👏👏👏
 
-- Added support for Null-Safety. (By ⭐[José Luis](https://github.com/SalahAdDin)⭐)
-- Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-- Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-- Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-- Added ability to set Sidebar Collapsed or Expanded according to a condition using the `isCollapsed` parameter. (By ⭐[Taylan YILDIZ](https://github.com/taylanyildiz)⭐)
-- Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
-- Added ability to hide Title and Avatar Image. (By ⭐[ShaunAtSense](https://github.com/ShaunAtSense)⭐)
-- Added ability to Collapse the Sidebar by tapping on body of the app (area other than the sidebar). (By ⭐[partitionce](https://github.com/partitionce)⭐)
-- Fixed #26. (By ⭐[Enes Malik Acun](https://github.com/maliksenpai)⭐)
+<a href="https://github.com/DrunkOnBytes/flutter_collapsible_sidebar/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=DrunkOnBytes/flutter_collapsible_sidebar&max=100&anon=1" />
+</a>
 
 ## Live preview
 
@@ -113,14 +109,6 @@ CollapsibleSidebar(
 | `fitItemsToBottom` | bool | true | fit all icons to the end of the space between image avatar and toggle button|
 | `showToggleButton` | bool | true | flag to enable/disable showing the toggle button |
 | `sidebarBoxShadow` | `List<BoxShadow>` | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |
-
-## Contributing
-# A big thank you to all the contributors without whom this project would be impossible to maintain and enhance. 👏👏👏
-
-<a href="https://github.com/DrunkOnBytes/flutter_collapsible_sidebar/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=DrunkOnBytes/flutter_collapsible_sidebar&max=100&anon=1" />
-</a>
-
 
 ## License
 
