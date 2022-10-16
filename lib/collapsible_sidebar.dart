@@ -325,6 +325,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ),
       title: widget.title,
       textStyle: _textStyle(widget.unselectedTextColor, widget.titleStyle),
+      isCollapsed: _isCollapsed,
+      minWidth: widget.minWidth,
       onTap: widget.onTitleTap,
     );
   }
@@ -350,6 +352,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         ),
         title: item.text,
         textStyle: _textStyle(textColor, widget.textStyle),
+        isCollapsed: _isCollapsed,
+        minWidth: widget.minWidth,
         onTap: () {
           if (item.isSelected) return;
           item.onPressed();
@@ -378,6 +382,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       title: widget.toggleTitle,
       textStyle:
           _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
+      isCollapsed: _isCollapsed,
+      minWidth: widget.minWidth,
       onTap: () {
         _isCollapsed = !_isCollapsed;
         var endWidth = _isCollapsed ? widget.minWidth : tempWidth;
