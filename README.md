@@ -78,7 +78,7 @@ Widget _body(Size size, BuildContext context) {
       height: double.infinity,
       width: double.infinity,
       color: Colors.blueGrey[50],
-      child: .........
+      child: .........,
     );
   }
  ```
