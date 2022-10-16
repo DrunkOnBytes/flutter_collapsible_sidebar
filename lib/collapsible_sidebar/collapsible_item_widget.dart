@@ -9,6 +9,8 @@ class CollapsibleItemWidget extends StatefulWidget {
     required this.padding,
     required this.offsetX,
     required this.scale,
+    this.isCollapsed,
+    this.minWidth,
     this.onTap,
   });
 
@@ -17,6 +19,8 @@ class CollapsibleItemWidget extends StatefulWidget {
   final String title;
   final TextStyle textStyle;
   final double offsetX, scale, padding;
+  final bool? isCollapsed;
+  final double? minWidth;
   final VoidCallback? onTap;
 
   @override
@@ -40,20 +44,25 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
         });
       },
       cursor: widget.onHoverPointer,
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Container(
-          color: Colors.transparent,
-          padding: EdgeInsets.all(widget.padding),
-          child: Stack(
-            alignment: Alignment.centerLeft,
-            children: [
-              widget.leading,
-              _title,
-            ],
+      child: LayoutBuilder(builder: (context, boxConstraints) {
+        return GestureDetector(
+          onTap: widget.onTap,
+          child: Container(
+            color: Colors.transparent,
+            padding: EdgeInsets.all(widget.padding),
+            child: Stack(
+              alignment:
+                  (boxConstraints.maxWidth.floor() < widget.minWidth!.floor() && (widget.isCollapsed ?? false))
+                      ? Alignment.center
+                      : Alignment.centerLeft,
+              children: [
+                widget.leading,
+                _title,
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 
