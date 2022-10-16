@@ -6,6 +6,10 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 
 ![responsive-ui](https://user-images.githubusercontent.com/37551474/182013560-741723a2-64c3-40e2-9b6c-c640e7fcf1ba.gif)
 
+## 🌟 Version 2.0.3 ✨
+
+---
+
 ## Features
 
 - Material Design
@@ -19,17 +23,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 - Flutter web
 - Flutter desktop
 
-## 🌟 Version 2.0.3 ✨
 
----
-
-- Added ability to handle lists of icons
-- Added ability to apply bottom and top padding to List of icons
-- Added ability to choose direction of icon tiles (top/bottom) using `fitItemsToBottom` property.
-- Added ability to give custom name to toggle button
-- Added ability to give custom Style to sidebar title using `titleStyle` property.
-- Added ability to give custom Style to collapsible items text using `textStyle` property.
-- Added ability to give custom Style to toggle button title using `toggleTitleStyle` property.
 - Added support for Null-Safety. (By ⭐[José Luis](https://github.com/SalahAdDin)⭐)
 - Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
 - Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
@@ -68,7 +62,7 @@ CollapsibleSidebar(
 ```
 
 Also you can use the `isCollapsed` condition depending how you want the state of the sidebar to change (collapsed/expanded)
-for exmaple [size.width]
+for example [size.width]
 
 ```dart
 CollapsibleSidebar(
@@ -80,7 +74,12 @@ CollapsibleSidebar(
 )
 ```
 
-## Parameters
+## Parameters (customizable attributes)
+
+| Name | Default Value | Description |
+| :---: | :---: | :---: |
+| `isCollapsed` | true  | can set condition to control state of sidebar (collapsed/expanded) on some property change |
+| `collapseOnBodyTap` | true  | flag to enable/disable tapping on the body of the app (area other than the sidebar) to collapse the sidebar |
 
 ```dart
 
