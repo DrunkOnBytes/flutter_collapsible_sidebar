@@ -23,7 +23,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 - Flutter web
 - Flutter desktop
 
-## Contributing
+## Contributors
 ### A big thank you to all the contributors without whom this project would be impossible to maintain and enhance. 👏👏👏
 
 <a href="https://github.com/DrunkOnBytes/flutter_collapsible_sidebar/graphs/contributors">
