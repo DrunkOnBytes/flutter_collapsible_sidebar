@@ -46,6 +46,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
+    this.collapseOnBodyTap = true,
     this.showTitle = true,
     this.sidebarBoxShadow = const [
       BoxShadow(
@@ -60,12 +61,15 @@ class CollapsibleSidebar extends StatefulWidget {
   final String title, toggleTitle;
   final MouseCursor onHoverPointer;
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
-  final bool titleBack;
   final IconData titleBackIcon;
   final Widget body;
   final avatarImg;
   final showTitle;
-  final bool showToggleButton, fitItemsToBottom, isCollapsed;
+  final bool showToggleButton,
+      fitItemsToBottom,
+      isCollapsed,
+      titleBack,
+      collapseOnBodyTap;
   final List<CollapsibleItem> items;
   final double height,
       minWidth,
@@ -210,7 +214,6 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
   @override
   Widget build(BuildContext context) {
-
     Widget sidebar = Padding(
       padding: EdgeInsets.all(widget.screenPadding),
       child: GestureDetector(
@@ -255,19 +258,19 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
               ),
               widget.showToggleButton
                   ? Divider(
-                color: widget.unselectedIconColor,
-                indent: 5,
-                endIndent: 5,
-                thickness: 1,
-              )
+                      color: widget.unselectedIconColor,
+                      indent: 5,
+                      endIndent: 5,
+                      thickness: 1,
+                    )
                   : SizedBox(
-                height: 5,
-              ),
+                      height: 5,
+                    ),
               widget.showToggleButton
                   ? _toggleButton
                   : SizedBox(
-                height: widget.iconSize,
-              ),
+                      height: widget.iconSize,
+                    ),
             ],
           ),
         ),
@@ -276,32 +279,36 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-      alignment: Alignment.topLeft,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: widget.minWidth * 1.1),
-          child: widget.body,
-        ),
-        sidebar,
-      ],
-    )
+            alignment: Alignment.topLeft,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                child: widget.body,
+              ),
+              sidebar,
+            ],
+          )
         : Stack(
-      alignment: Alignment.topLeft,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: widget.minWidth * 1.1),
-          child: widget.body,
-        ),
-        GestureDetector(
-          onTap: () {
-            _isCollapsed = true;
-            _animateTo(widget.minWidth);
-          },
-          child: Container(color: Colors.transparent,),
-        ),
-        sidebar,
-      ],
-    );
+            alignment: Alignment.topLeft,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                child: widget.body,
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (widget.collapseOnBodyTap) {
+                    _isCollapsed = true;
+                    _animateTo(widget.minWidth);
+                  }
+                },
+                child: Container(
+                  color: Colors.transparent,
+                ),
+              ),
+              sidebar,
+            ],
+          );
   }
 
   Widget get _avatar {

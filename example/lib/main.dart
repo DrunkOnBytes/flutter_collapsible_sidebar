@@ -13,6 +13,15 @@ class MyApp extends StatelessWidget {
       title: 'Sidebar ui',
       home: Scaffold(
         body: SidebarPage(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Yay! Button Pressed!'),
+            ));
+          },
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.navigation),
+        ),
       ),
     );
   }

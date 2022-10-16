@@ -1,43 +1,44 @@
 # collapsible_sidebar
--------------------------------------------------------------
+
+---
 
 A collapsible sidebar for Flutter apps implementing the Material Design.
 
-![indicator](screenshot/collapsible_sidebar.gif)
-
 ![responsive-ui](https://user-images.githubusercontent.com/37551474/182013560-741723a2-64c3-40e2-9b6c-c640e7fcf1ba.gif)
 
+## Features
 
-## Features 
-
-* Material Design
-* Pre-built customizable tile widgets (CollapsibleItems)
-* Smooth Animation
+- Material Design
+- Pre-built customizable tile widgets (CollapsibleItems)
+- Smooth Animation
 
 ## Supported platforms
 
-* Flutter Android
-* Flutter iOS
-* Flutter web
-* Flutter desktop
+- Flutter Android
+- Flutter iOS
+- Flutter web
+- Flutter desktop
 
-## 🌟 Version 2.0.2+3 ✨
--------------------------------
+## 🌟 Version 2.0.3 ✨
 
-* Added ability to handle lists of icons
-* Added ability to apply bottom and top padding to List of icons
-* Added ability to choose direction of icon tiles (top/bottom) using ```fitItemsToBottom``` property.
-* Added ability to give custom name to toggle button
-* Added ability to give custom Style to sidebar title using ```titleStyle``` property.
-* Added ability to give custom Style to collapsible items text using ```textStyle``` property.
-* Added ability to give custom Style to toggle button title using ```toggleTitleStyle``` property.
-* Added support for Null-Safety. (By ⭐[José Luis](https://github.com/SalahAdDin)⭐)
-* Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-* Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-* Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
-* Added ability to set Sidebar Collapsed or Expanded according to a condition using the `isCollapsed` parameter. (By ⭐[Taylan YILDIZ](https://github.com/taylanyildiz)⭐)
-* Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
-* Added ability to hide Title and Avatar Image. (By ⭐[ShaunAtSense](https://github.com/ShaunAtSense)⭐)
+---
+
+- Added ability to handle lists of icons
+- Added ability to apply bottom and top padding to List of icons
+- Added ability to choose direction of icon tiles (top/bottom) using `fitItemsToBottom` property.
+- Added ability to give custom name to toggle button
+- Added ability to give custom Style to sidebar title using `titleStyle` property.
+- Added ability to give custom Style to collapsible items text using `textStyle` property.
+- Added ability to give custom Style to toggle button title using `toggleTitleStyle` property.
+- Added support for Null-Safety. (By ⭐[José Luis](https://github.com/SalahAdDin)⭐)
+- Added Mouse Region Detection on Web and ability to change Cursor type. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
+- Title Avatar picture can be replaced with custom back icon. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
+- Title Avatar clickable with custom callback function. (By ⭐[TheLonelyNull](https://github.com/TheLonelyNull)⭐)
+- Added ability to set Sidebar Collapsed or Expanded according to a condition using the `isCollapsed` parameter. (By ⭐[Taylan YILDIZ](https://github.com/taylanyildiz)⭐)
+- Added ability to set custom BoxShadows to the sidebar using the `sidebarBoxShadow` parameter.
+- Added ability to hide Title and Avatar Image. (By ⭐[ShaunAtSense](https://github.com/ShaunAtSense)⭐)
+- Added ability to Collapse the Sidebar by tapping on body of the app (area other than the sidebar). (By ⭐[partitionce](https://github.com/partitionce)⭐)
+- Fixed #26. (By ⭐[Enes Malik Acun](https://github.com/maliksenpai)⭐)
 
 ## Live preview
 
@@ -47,7 +48,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.2+3` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.3` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -85,6 +86,7 @@ CollapsibleSidebar(
 
 CollapsibleSidebar(
     isCollapsed: true, //true by default, can set condition to control state of sidebar (collapsed/expanded) on some property change
+    collapseOnBodyTap: true, //true by default, flag to enable/disable tapping on the body of the app (area other than the sidebar) to collapse the sidebar
     items: _items,
     showTitle: true, //true by default, can set to false to hide title and avatar Image
     title: 'Lorem Ipsum',
@@ -131,6 +133,7 @@ CollapsibleSidebar(
 ```
 
 ## License
---------------------------------------------------------------
+
+---
 
 Apache 2.0
