@@ -279,7 +279,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Alignment.topLeft,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -289,7 +289,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ],
           )
         : Stack(
-            alignment: Alignment.topLeft,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
