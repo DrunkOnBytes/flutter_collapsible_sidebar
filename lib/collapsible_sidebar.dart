@@ -120,17 +120,17 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
     super.initState();
 
     tempWidth = widget.maxWidth > 270 ? 270 : widget.maxWidth;
-
     _currWidth = widget.minWidth;
     _delta = tempWidth - widget.minWidth;
     _delta1By4 = _delta * 0.25;
     _delta3by4 = _delta * 0.75;
     _maxOffsetX = widget.padding * 2 + widget.iconSize;
     _maxOffsetY = widget.itemPadding * 2 + widget.iconSize;
+
+    _selectedItemIndex = 0;
     for (var i = 0; i < widget.items.length; i++) {
-      if (!widget.items[i].isSelected) continue;
-      _selectedItemIndex = i;
-      break;
+      if (widget.items[i].isSelected) break;
+      _selectedItemIndex += 1;
     }
 
     _controller = AnimationController(
