@@ -58,17 +58,17 @@ class CollapsibleSidebar extends StatefulWidget {
     ],
   }) : super(key: key);
 
+  final avatarImg;
   final String title, toggleTitle;
   final MouseCursor onHoverPointer;
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
   final IconData titleBackIcon;
   final Widget body;
-  final avatarImg;
-  final showTitle;
   final bool showToggleButton,
       fitItemsToBottom,
       isCollapsed,
       titleBack,
+      showTitle,
       collapseOnBodyTap;
   final List<CollapsibleItem> items;
   final double height,
