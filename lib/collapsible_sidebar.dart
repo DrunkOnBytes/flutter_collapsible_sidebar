@@ -188,7 +188,11 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
   void _onHorizontalDragUpdate(DragUpdateDetails details) {
     if (details.primaryDelta != null) {
-      _currWidth += details.primaryDelta!;
+      if (Directionality.of(context) == TextDirection.ltr) {
+        _currWidth += details.primaryDelta!;
+      } else {
+        _currWidth -= details.primaryDelta!;
+      }
       if (_currWidth > tempWidth)
         _currWidth = tempWidth;
       else if (_currWidth < widget.minWidth)
@@ -279,7 +283,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Alignment.topLeft,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -289,7 +293,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ],
           )
         : Stack(
-            alignment: Alignment.topLeft,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
