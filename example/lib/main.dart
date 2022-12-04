@@ -55,6 +55,9 @@ class _SidebarPageState extends State<SidebarPage> {
       CollapsibleItem(
         text: 'Ice-Cream',
         icon: Icons.icecream,
+        showBadge: true,
+        badgeColor: Colors.blue,
+        badgeContent: Icon(Icons.ac_unit_outlined, size: 14),
         onPressed: () => setState(() => _headline = 'Errors'),
       ),
       CollapsibleItem(

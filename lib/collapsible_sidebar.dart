@@ -2,6 +2,7 @@ library collapsible_sidebar;
 
 import 'dart:math' as math show pi;
 
+import 'package:badges/badges.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_avatar.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_container.dart';
 import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_item.dart';
@@ -283,7 +284,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -293,7 +296,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ],
           )
         : Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -356,10 +361,15 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         padding: widget.itemPadding,
         offsetX: _offsetX,
         scale: _fraction,
-        leading: Icon(
-          item.icon,
-          size: widget.iconSize,
-          color: iconColor,
+        leading: Badge(
+          badgeColor: item.badgeColor,
+          badgeContent: item.badgeContent,
+          showBadge: item.showBadge,
+          child: Icon(
+            item.icon,
+            size: widget.iconSize,
+            color: iconColor,
+          ),
         ),
         title: item.text,
         textStyle: _textStyle(textColor, widget.textStyle),
