@@ -299,21 +299,23 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                 ? Alignment.topLeft
                 : Alignment.topRight,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
-                child: widget.body,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (widget.collapseOnBodyTap) {
-                    _isCollapsed = true;
-                    _animateTo(widget.minWidth);
-                  }
-                },
-                child: Container(
-                  color: Colors.transparent,
-                ),
-              ),
+              widget.collapseOnBodyTap
+                  ? GestureDetector(
+                      onTap: () {
+                        if (widget.collapseOnBodyTap) {
+                          _isCollapsed = true;
+                          _animateTo(widget.minWidth);
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
+                        child: widget.body,
+                      ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
+                      child: widget.body,
+                    ),
               sidebar,
             ],
           );
