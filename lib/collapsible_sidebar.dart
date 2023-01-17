@@ -43,6 +43,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.showToggleButton = true,
     this.topPadding = 0,
     this.bottomPadding = 0,
+    this.itemPadding = 10,
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
@@ -77,7 +78,7 @@ class CollapsibleSidebar extends StatefulWidget {
       borderRadius,
       iconSize,
       padding = 10,
-      itemPadding = 10,
+      itemPadding,
       topPadding,
       bottomPadding,
       screenPadding;
