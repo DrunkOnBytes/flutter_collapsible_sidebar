@@ -1,3 +1,4 @@
+import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_multi_level_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class CollapsibleItemWidget extends StatefulWidget {
@@ -10,8 +11,10 @@ class CollapsibleItemWidget extends StatefulWidget {
     required this.offsetX,
     required this.scale,
     this.isCollapsed,
+    this.isSelected,
     this.minWidth,
     this.onTap,
+    this.subItems,
   });
 
   final MouseCursor onHoverPointer;
@@ -20,8 +23,10 @@ class CollapsibleItemWidget extends StatefulWidget {
   final TextStyle textStyle;
   final double offsetX, scale, padding;
   final bool? isCollapsed;
+  final bool? isSelected;
   final double? minWidth;
   final VoidCallback? onTap;
+  final List<CollapsibleItemWidget>? subItems;
 
   @override
   _CollapsibleItemWidgetState createState() => _CollapsibleItemWidgetState();
@@ -50,16 +55,27 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
           child: Container(
             color: Colors.transparent,
             padding: EdgeInsets.all(widget.padding),
-            child: Stack(
-              alignment:
-                  (boxConstraints.maxWidth.floor() < widget.minWidth!.floor() && (widget.isCollapsed ?? false))
-                      ? Alignment.center
-                      : Alignment.centerLeft,
-              children: [
-                widget.leading,
-                _title,
-              ],
-            ),
+            child: widget.subItems == null
+                ? Row(
+                    children: [
+                      widget.leading,
+                      _title,
+                    ],
+                  )
+                : CollapsibleMultiLevelItemWidget(
+                    mainLevel: Row(
+                      children: [
+                        Flexible(child: widget.leading),
+                        _title,
+                      ],
+                    ),
+                    onTapMainLevel: widget.onTap,
+                    subItems: widget.subItems!,
+                    extendable: widget.isCollapsed != false ||
+                        widget.isSelected != false,
+                    disable: widget.isCollapsed,
+                    iconColor: widget.textStyle.color,
+                  ),
           ),
         );
       }),
@@ -67,14 +83,18 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
   }
 
   Widget get _title {
-    return Opacity(
-      opacity: widget.scale,
-      child: Transform.translate(
-        offset: Offset(Directionality.of(context) == TextDirection.ltr ? widget.offsetX : 0, 0),
-        child: Transform.scale(
-          scale: widget.scale,
-          child: SizedBox(
-            width: double.infinity,
+    return Expanded(
+      child: Opacity(
+        opacity: widget.scale,
+        child: Transform.translate(
+          offset: Offset(
+            Directionality.of(context) == TextDirection.ltr
+                ? widget.offsetX
+                : 0,
+            0,
+          ),
+          child: Transform.scale(
+            scale: widget.scale,
             child: Text(
               widget.title,
               style: _underline

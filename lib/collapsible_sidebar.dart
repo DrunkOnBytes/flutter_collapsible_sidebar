@@ -283,7 +283,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -293,7 +295,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ],
           )
         : Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -351,28 +355,89 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         iconColor = widget.selectedIconColor;
         textColor = widget.selectedTextColor;
       }
-      return CollapsibleItemWidget(
-        onHoverPointer: widget.onHoverPointer,
-        padding: widget.itemPadding,
-        offsetX: _offsetX,
-        scale: _fraction,
-        leading: Icon(
-          item.icon,
-          size: widget.iconSize,
-          color: iconColor,
-        ),
-        title: item.text,
-        textStyle: _textStyle(textColor, widget.textStyle),
-        isCollapsed: _isCollapsed,
-        minWidth: widget.minWidth,
-        onTap: () {
-          if (item.isSelected) return;
-          item.onPressed();
-          item.isSelected = true;
-          widget.items[_selectedItemIndex].isSelected = false;
-          setState(() => _selectedItemIndex = index);
-        },
-      );
+      if (index % 2 == 0) {
+        return CollapsibleItemWidget(
+          onHoverPointer: widget.onHoverPointer,
+          padding: widget.itemPadding,
+          offsetX: _offsetX,
+          scale: _fraction,
+          leading: Icon(
+            item.icon,
+            size: widget.iconSize,
+            color: iconColor,
+          ),
+          title: item.text,
+          textStyle: _textStyle(textColor, widget.textStyle),
+          isCollapsed: _isCollapsed,
+          minWidth: widget.minWidth,
+          isSelected: item.isSelected,
+          onTap: () {
+            if (item.isSelected) return;
+            item.onPressed();
+            item.isSelected = true;
+            widget.items[_selectedItemIndex].isSelected = false;
+            setState(() => _selectedItemIndex = index);
+          },
+          subItems: [
+            CollapsibleItemWidget(
+              title: item.text,
+              leading: Icon(
+                Icons.abc,
+                size: widget.iconSize,
+                color: iconColor,
+              ),
+              isCollapsed: _isCollapsed,
+              padding: widget.itemPadding,
+              offsetX: _offsetX,
+              scale: _fraction,
+              textStyle: _textStyle(textColor, widget.textStyle),
+              onHoverPointer: SystemMouseCursors.click,
+              isSelected: item.isSelected,
+              subItems: [
+                CollapsibleItemWidget(
+                  title: item.text,
+                  leading: Icon(
+                    Icons.account_circle_sharp,
+                    size: widget.iconSize,
+                    color: iconColor,
+                  ),
+                  isCollapsed: _isCollapsed,
+                  padding: widget.itemPadding,
+                  offsetX: _offsetX,
+                  scale: _fraction,
+                  textStyle: _textStyle(textColor, widget.textStyle),
+                  onHoverPointer: SystemMouseCursors.click,
+                  isSelected: item.isSelected,
+                )
+              ],
+            ),
+          ],
+        );
+      } else {
+        return CollapsibleItemWidget(
+          onHoverPointer: widget.onHoverPointer,
+          padding: widget.itemPadding,
+          offsetX: _offsetX,
+          scale: _fraction,
+          leading: Icon(
+            item.icon,
+            size: widget.iconSize,
+            color: iconColor,
+          ),
+          title: item.text,
+          textStyle: _textStyle(textColor, widget.textStyle),
+          isCollapsed: _isCollapsed,
+          minWidth: widget.minWidth,
+          isSelected: item.isSelected,
+          onTap: () {
+            if (item.isSelected) return;
+            item.onPressed();
+            item.isSelected = true;
+            widget.items[_selectedItemIndex].isSelected = false;
+            setState(() => _selectedItemIndex = index);
+          },
+        );
+      }
     });
   }
 
@@ -404,7 +469,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
   }
 
   double get _fraction => (_currWidth - widget.minWidth) / _delta;
+
   double get _currAngle => -math.pi * _fraction;
+
   double get _offsetX => _maxOffsetX * _fraction;
 
   TextStyle _textStyle(Color color, TextStyle? style) {
