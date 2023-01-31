@@ -43,6 +43,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.showToggleButton = true,
     this.topPadding = 0,
     this.bottomPadding = 0,
+    this.itemPadding = 10,
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
@@ -77,7 +78,7 @@ class CollapsibleSidebar extends StatefulWidget {
       borderRadius,
       iconSize,
       padding = 10,
-      itemPadding = 10,
+      itemPadding,
       topPadding,
       bottomPadding,
       screenPadding;
@@ -283,7 +284,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -293,23 +296,27 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ],
           )
         : Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: widget.minWidth * 1.1),
-                child: widget.body,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (widget.collapseOnBodyTap) {
-                    _isCollapsed = true;
-                    _animateTo(widget.minWidth);
-                  }
-                },
-                child: Container(
-                  color: Colors.transparent,
-                ),
-              ),
+              widget.collapseOnBodyTap
+                  ? GestureDetector(
+                      onTap: () {
+                        if (widget.collapseOnBodyTap) {
+                          _isCollapsed = true;
+                          _animateTo(widget.minWidth);
+                        }
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
+                        child: widget.body,
+                      ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
+                      child: widget.body,
+                    ),
               sidebar,
             ],
           );
