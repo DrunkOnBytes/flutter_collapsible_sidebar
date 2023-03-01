@@ -112,6 +112,7 @@ class _SidebarPageState extends State<SidebarPage> {
       child: CollapsibleSidebar(
         isCollapsed: MediaQuery.of(context).size.width <= 800,
         items: _items,
+        collapseOnBodyTap: false,
         avatarImg: _avatarImg,
         title: 'John Smith',
         onTitleTap: () {

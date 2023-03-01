@@ -303,18 +303,16 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
               widget.collapseOnBodyTap
                   ? GestureDetector(
                       onTap: () {
-                        if (widget.collapseOnBodyTap) {
-                          _isCollapsed = true;
-                          _animateTo(widget.minWidth);
-                        }
+                        _isCollapsed = true;
+                        _animateTo(widget.minWidth);
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
+                        padding: EdgeInsets.only(left: widget.minWidth * 1.1),
                         child: widget.body,
                       ),
                     )
                   : Padding(
-                      padding: EdgeInsets.only(left: widget.maxWidth * 1.1),
+                      padding: EdgeInsets.only(left: widget.minWidth * 1.1),
                       child: widget.body,
                     ),
               sidebar,
