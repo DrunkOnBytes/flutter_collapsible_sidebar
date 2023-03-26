@@ -377,6 +377,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
           widget.items[_selectedItemIndex].isSelected = false;
           setState(() => _selectedItemIndex = index);
         },
+        onLongPress: () => item.onHold!(),
       );
     });
   }

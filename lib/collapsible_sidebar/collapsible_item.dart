@@ -6,6 +6,7 @@ class CollapsibleItem {
     required this.text,
     required this.icon,
     required this.onPressed,
+    this.onHold,
     this.isSelected = false,
     this.subItems,
   });
@@ -13,6 +14,7 @@ class CollapsibleItem {
   final String text;
   final IconData icon;
   final Function onPressed;
+  final Function? onHold;
   bool isSelected;
   List<CollapsibleItem>? subItems;
 }

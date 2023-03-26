@@ -12,6 +12,7 @@ class CollapsibleItemWidget extends StatefulWidget {
     this.isCollapsed,
     this.minWidth,
     this.onTap,
+    this.onLongPress,
   });
 
   final MouseCursor onHoverPointer;
@@ -22,6 +23,7 @@ class CollapsibleItemWidget extends StatefulWidget {
   final bool? isCollapsed;
   final double? minWidth;
   final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
 
   @override
   _CollapsibleItemWidgetState createState() => _CollapsibleItemWidgetState();
@@ -47,6 +49,7 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
       child: LayoutBuilder(builder: (context, boxConstraints) {
         return GestureDetector(
           onTap: widget.onTap,
+          onLongPress: widget.onLongPress,
           child: Container(
             color: Colors.transparent,
             padding: EdgeInsets.all(widget.padding),
