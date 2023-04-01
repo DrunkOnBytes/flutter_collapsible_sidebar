@@ -43,6 +43,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.showToggleButton = true,
     this.topPadding = 0,
     this.bottomPadding = 0,
+    this.itemPadding = 10,
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
@@ -77,7 +78,7 @@ class CollapsibleSidebar extends StatefulWidget {
       borderRadius,
       iconSize,
       padding = 10,
-      itemPadding = 10,
+      itemPadding,
       topPadding,
       bottomPadding,
       screenPadding;
@@ -299,21 +300,21 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                 ? Alignment.topLeft
                 : Alignment.topRight,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: widget.minWidth * 1.1),
-                child: widget.body,
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (widget.collapseOnBodyTap) {
-                    _isCollapsed = true;
-                    _animateTo(widget.minWidth);
-                  }
-                },
-                child: Container(
-                  color: Colors.transparent,
-                ),
-              ),
+              widget.collapseOnBodyTap
+                  ? GestureDetector(
+                      onTap: () {
+                        _isCollapsed = true;
+                        _animateTo(widget.minWidth);
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                        child: widget.body,
+                      ),
+                    )
+                  : Padding(
+                      padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                      child: widget.body,
+                    ),
               sidebar,
             ],
           );
@@ -355,89 +356,33 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         iconColor = widget.selectedIconColor;
         textColor = widget.selectedTextColor;
       }
-      if (index % 2 == 0) {
-        return CollapsibleItemWidget(
-          onHoverPointer: widget.onHoverPointer,
-          padding: widget.itemPadding,
-          offsetX: _offsetX,
-          scale: _fraction,
-          leading: Icon(
-            item.icon,
-            size: widget.iconSize,
-            color: iconColor,
-          ),
-          title: item.text,
-          textStyle: _textStyle(textColor, widget.textStyle),
-          isCollapsed: _isCollapsed,
-          minWidth: widget.minWidth,
-          isSelected: item.isSelected,
-          onTap: () {
-            if (item.isSelected) return;
-            item.onPressed();
-            item.isSelected = true;
-            widget.items[_selectedItemIndex].isSelected = false;
-            setState(() => _selectedItemIndex = index);
-          },
-          subItems: [
-            CollapsibleItemWidget(
-              title: item.text,
-              leading: Icon(
-                Icons.abc,
-                size: widget.iconSize,
-                color: iconColor,
-              ),
-              isCollapsed: _isCollapsed,
-              padding: widget.itemPadding,
-              offsetX: _offsetX,
-              scale: _fraction,
-              textStyle: _textStyle(textColor, widget.textStyle),
-              onHoverPointer: SystemMouseCursors.click,
-              isSelected: item.isSelected,
-              subItems: [
-                CollapsibleItemWidget(
-                  title: item.text,
-                  leading: Icon(
-                    Icons.account_circle_sharp,
-                    size: widget.iconSize,
-                    color: iconColor,
-                  ),
-                  isCollapsed: _isCollapsed,
-                  padding: widget.itemPadding,
-                  offsetX: _offsetX,
-                  scale: _fraction,
-                  textStyle: _textStyle(textColor, widget.textStyle),
-                  onHoverPointer: SystemMouseCursors.click,
-                  isSelected: item.isSelected,
-                )
-              ],
-            ),
-          ],
-        );
-      } else {
-        return CollapsibleItemWidget(
-          onHoverPointer: widget.onHoverPointer,
-          padding: widget.itemPadding,
-          offsetX: _offsetX,
-          scale: _fraction,
-          leading: Icon(
-            item.icon,
-            size: widget.iconSize,
-            color: iconColor,
-          ),
-          title: item.text,
-          textStyle: _textStyle(textColor, widget.textStyle),
-          isCollapsed: _isCollapsed,
-          minWidth: widget.minWidth,
-          isSelected: item.isSelected,
-          onTap: () {
-            if (item.isSelected) return;
-            item.onPressed();
-            item.isSelected = true;
-            widget.items[_selectedItemIndex].isSelected = false;
-            setState(() => _selectedItemIndex = index);
-          },
-        );
-      }
+      return CollapsibleItemWidget(
+        onHoverPointer: widget.onHoverPointer,
+        padding: widget.itemPadding,
+        offsetX: _offsetX,
+        scale: _fraction,
+        leading: Icon(
+          item.icon,
+          size: widget.iconSize,
+          color: iconColor,
+        ),
+        title: item.text,
+        textStyle: _textStyle(textColor, widget.textStyle),
+        isCollapsed: _isCollapsed,
+        minWidth: widget.minWidth,
+        onTap: () {
+          if (item.isSelected) return;
+          item.onPressed();
+          item.isSelected = true;
+          widget.items[_selectedItemIndex].isSelected = false;
+          setState(() => _selectedItemIndex = index);
+        },
+        onLongPress: () {
+          if (item.onHold != null) {
+            item.onHold!();
+          }
+        },
+      );
     });
   }
 
@@ -469,9 +414,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
   }
 
   double get _fraction => (_currWidth - widget.minWidth) / _delta;
-
   double get _currAngle => -math.pi * _fraction;
-
   double get _offsetX => _maxOffsetX * _fraction;
 
   TextStyle _textStyle(Color color, TextStyle? style) {

@@ -50,57 +50,90 @@ class _SidebarPageState extends State<SidebarPage> {
         text: 'Dashboard',
         icon: Icons.assessment,
         onPressed: () => setState(() => _headline = 'DashBoard'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Dashboard"))
+        ),
         isSelected: true,
       ),
       CollapsibleItem(
         text: 'Ice-Cream',
         icon: Icons.icecream,
         onPressed: () => setState(() => _headline = 'Errors'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Ice-Cream"))
+        ),
       ),
       CollapsibleItem(
         text: 'Search',
         icon: Icons.search,
         onPressed: () => setState(() => _headline = 'Search'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Search"))
+        ),
       ),
       CollapsibleItem(
         text: 'Notifications',
         icon: Icons.notifications,
         onPressed: () => setState(() => _headline = 'Notifications'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Notifications"))
+        ),
       ),
       CollapsibleItem(
         text: 'Settings',
         icon: Icons.settings,
         onPressed: () => setState(() => _headline = 'Settings'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Settings"))
+        ),
       ),
       CollapsibleItem(
         text: 'Home',
         icon: Icons.home,
         onPressed: () => setState(() => _headline = 'Home'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Home"))
+        ),
       ),
       CollapsibleItem(
         text: 'Alarm',
         icon: Icons.access_alarm,
         onPressed: () => setState(() => _headline = 'Alarm'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Alarm"))
+        ),
       ),
       CollapsibleItem(
         text: 'Eco',
         icon: Icons.eco,
         onPressed: () => setState(() => _headline = 'Eco'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Eco"))
+        ),
       ),
       CollapsibleItem(
         text: 'Event',
         icon: Icons.event,
         onPressed: () => setState(() => _headline = 'Event'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Event"))
+        ),
       ),
       CollapsibleItem(
         text: 'Email',
         icon: Icons.email,
         onPressed: () => setState(() => _headline = 'Email'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Email"))
+        ),
       ),
       CollapsibleItem(
         text: 'Face',
         icon: Icons.face,
         onPressed: () => setState(() => _headline = 'Face'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Face"))
+        ),
       ),
     ];
   }
@@ -112,6 +145,7 @@ class _SidebarPageState extends State<SidebarPage> {
       child: CollapsibleSidebar(
         isCollapsed: MediaQuery.of(context).size.width <= 800,
         items: _items,
+        collapseOnBodyTap: false,
         avatarImg: _avatarImg,
         title: 'John Smith',
         onTitleTap: () {
