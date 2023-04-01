@@ -6,7 +6,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 
 ![responsive-ui](https://user-images.githubusercontent.com/37551474/182013560-741723a2-64c3-40e2-9b6c-c640e7fcf1ba.gif)
 
-## 🌟 Version 2.0.3+3 ✨
+## 🌟 Version 2.0.4 ✨
 
 ---
 
@@ -39,7 +39,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.3+3` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.4` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -56,17 +56,26 @@ List<CollapsibleItem> get _items {
         text: 'Dashboard',
         icon: Icons.assessment,
         onPressed: () => setState(() => _headline = 'DashBoard'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("DashBoard"))
+        ),
         isSelected: true,
       ),
       CollapsibleItem(
         text: 'Ice-Cream',
         icon: Icons.icecream,
         onPressed: () => setState(() => _headline = 'Errors'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Ice-Cream"))
+        ),
       ),
       CollapsibleItem(
         text: 'Search',
         icon: Icons.search,
         onPressed: () => setState(() => _headline = 'Search'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("Search"))
+        ),
       ),
     ];
   }
