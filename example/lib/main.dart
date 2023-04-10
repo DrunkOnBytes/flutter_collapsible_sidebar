@@ -54,11 +54,42 @@ class _SidebarPageState extends State<SidebarPage> {
           SnackBar(content: const Text("Dashboard"))
         ),
         isSelected: true,
+        subItems: [
+          CollapsibleItem(
+              text: 'Web1',
+              icon: Icons.assessment,
+              onPressed: () => setState(() => _headline = 'Web1'),
+              onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text("Web1"))
+              ),
+              isSelected: true,
+          ),
+          CollapsibleItem(
+              text: 'Web2',
+              icon: Icons.assessment,
+              onPressed: () => setState(() => _headline = 'Web2'),
+              onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text("Web2"))
+              ),
+              isSelected: true,
+              subItems: [
+                CollapsibleItem(
+                    text: 'Web22',
+                    icon: Icons.assessment,
+                    onPressed: () => setState(() => _headline = 'Web22'),
+                    onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: const Text("Web22"))
+                    ),
+                    isSelected: true,
+                )
+              ]
+          ),
+        ]
       ),
       CollapsibleItem(
         text: 'Ice-Cream',
         icon: Icons.icecream,
-        onPressed: () => setState(() => _headline = 'Errors'),
+        onPressed: () => setState(() => _headline = 'Ice-Cream'),
         onHold: () => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: const Text("Ice-Cream"))
         ),
@@ -126,6 +157,76 @@ class _SidebarPageState extends State<SidebarPage> {
         onHold: () => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: const Text("Email"))
         ),
+      ),
+      CollapsibleItem(
+        text: 'News',
+        icon: Icons.account_balance,
+        onPressed: () => setState(() => _headline = 'News'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: const Text("News"))
+        ),
+        subItems: [
+          CollapsibleItem(
+              text: 'Old News',
+              icon: Icons.account_balance,
+              onPressed: () => setState(() => _headline = 'Old News'),
+              onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text("Old News"))
+              ),
+          ),
+          CollapsibleItem(
+              text: 'Current News',
+              icon: Icons.account_balance,
+              onPressed: () => setState(() => _headline = 'Current News'),
+              onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text("Current News"))
+              ),
+              subItems: [
+                CollapsibleItem(
+                    text: 'News 1',
+                    icon: Icons.account_balance,
+                    onPressed: () => setState(() => _headline = 'News 1'),
+                    onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: const Text("News 1"))
+                    ),
+                ),
+                CollapsibleItem(
+                    text: 'News 2',
+                    icon: Icons.account_balance,
+                    onPressed: () => setState(() => _headline = 'News 2'),
+                    onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: const Text("News 2"))
+                    ),
+                    subItems: [
+                      CollapsibleItem(
+                          text: 'News 2 Detail',
+                          icon: Icons.account_balance,
+                          onPressed: () => setState(() => _headline = 'News 2 Detail'),
+                          onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: const Text("News 2 Detail"))
+                          ),
+                      )
+                    ]
+                ),
+                CollapsibleItem(
+                    text: 'News 3',
+                    icon: Icons.account_balance,
+                    onPressed: () => setState(() => _headline = 'News 3'),
+                    onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: const Text("News 3"))
+                    ),
+                )
+              ]
+          ),
+          CollapsibleItem(
+              text: 'New News',
+              icon: Icons.account_balance,
+              onPressed: () => setState(() => _headline = 'New News'),
+              onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text("New News"))
+              ),
+          ),
+        ]
       ),
       CollapsibleItem(
         text: 'Face',
