@@ -1,3 +1,5 @@
+import 'package:collapsible_sidebar/collapsible_sidebar.dart';
+import 'package:collapsible_sidebar/collapsible_sidebar/collapsible_multi_level_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class CollapsibleItemWidget extends StatefulWidget {
@@ -10,9 +12,14 @@ class CollapsibleItemWidget extends StatefulWidget {
     required this.offsetX,
     required this.scale,
     this.isCollapsed,
+    this.isSelected,
     this.minWidth,
     this.onTap,
+    this.subItems,
     this.onLongPress,
+    this.iconSize,
+    this.iconColor,
+    this.parentComponent,
   });
 
   final MouseCursor onHoverPointer;
@@ -21,8 +28,13 @@ class CollapsibleItemWidget extends StatefulWidget {
   final TextStyle textStyle;
   final double offsetX, scale, padding;
   final bool? isCollapsed;
+  final bool? isSelected;
   final double? minWidth;
   final VoidCallback? onTap;
+  final List<CollapsibleItem>? subItems;
+  final double? iconSize;
+  final Color? iconColor;
+  final bool? parentComponent;
   final VoidCallback? onLongPress;
 
   @override
@@ -47,37 +59,62 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
       },
       cursor: widget.onHoverPointer,
       child: LayoutBuilder(builder: (context, boxConstraints) {
-        return GestureDetector(
-          onTap: widget.onTap,
-          onLongPress: widget.onLongPress,
-          child: Container(
-            color: Colors.transparent,
-            padding: EdgeInsets.all(widget.padding),
-            child: Stack(
-              alignment:
-                  (boxConstraints.maxWidth.floor() < widget.minWidth!.floor() && (widget.isCollapsed ?? false))
-                      ? Alignment.center
-                      : Alignment.centerLeft,
-              children: [
-                widget.leading,
-                _title,
-              ],
-            ),
-          ),
+        return Container(
+          color: Colors.transparent,
+          padding: EdgeInsets.all(widget.padding),
+          child: widget.subItems == null
+              ? GestureDetector(
+                  onTap: widget.onTap,
+                  onLongPress: widget.onLongPress,
+                  child: Row(
+                    children: [
+                      widget.leading,
+                      _title,
+                    ],
+                  ),
+                )
+              : CollapsibleMultiLevelItemWidget(
+                  onHoverPointer: widget.onHoverPointer,
+                  textStyle: widget.textStyle,
+                  offsetX: widget.offsetX,
+                  isSelected: widget.isSelected,
+                  scale: widget.scale,
+                  padding: widget.padding,
+                  minWidth: widget.minWidth,
+                  isCollapsed: widget.isCollapsed,
+                  parentComponent: widget.parentComponent,
+                  mainLevel: Row(
+                    children: [
+                      Flexible(child: widget.leading),
+                      _title,
+                    ],
+                  ),
+                  onTapMainLevel: widget.onTap,
+                  subItems: widget.subItems!,
+                  extendable:
+                      widget.isCollapsed != false || widget.isSelected != false,
+                  disable: widget.isCollapsed,
+                  iconColor: widget.iconColor,
+                  iconSize: widget.iconSize,
+                ),
         );
       }),
     );
   }
 
   Widget get _title {
-    return Opacity(
-      opacity: widget.scale,
-      child: Transform.translate(
-        offset: Offset(Directionality.of(context) == TextDirection.ltr ? widget.offsetX : 0, 0),
-        child: Transform.scale(
-          scale: widget.scale,
-          child: SizedBox(
-            width: double.infinity,
+    return Expanded(
+      child: Opacity(
+        opacity: widget.scale,
+        child: Transform.translate(
+          offset: Offset(
+            Directionality.of(context) == TextDirection.ltr
+                ? widget.offsetX
+                : 0,
+            0,
+          ),
+          child: Transform.scale(
+            scale: widget.scale,
             child: Text(
               widget.title,
               style: _underline

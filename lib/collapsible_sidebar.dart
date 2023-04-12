@@ -366,10 +366,14 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
           size: widget.iconSize,
           color: iconColor,
         ),
+        iconSize: widget.iconSize,
+        iconColor: iconColor,
         title: item.text,
         textStyle: _textStyle(textColor, widget.textStyle),
         isCollapsed: _isCollapsed,
         minWidth: widget.minWidth,
+        isSelected: item.isSelected,
+        parentComponent: true,
         onTap: () {
           if (item.isSelected) return;
           item.onPressed();
@@ -382,6 +386,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             item.onHold!();
           }
         },
+        subItems: item.subItems,
       );
     });
   }
@@ -414,7 +419,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
   }
 
   double get _fraction => (_currWidth - widget.minWidth) / _delta;
+
   double get _currAngle => -math.pi * _fraction;
+
   double get _offsetX => _maxOffsetX * _fraction;
 
   TextStyle _textStyle(Color color, TextStyle? style) {
