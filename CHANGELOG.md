@@ -1,4 +1,4 @@
-## [2.0.5] - 14-05-2023
+## [2.0.6] - 14-05-2023
 
 - Added multi-level menu
 - `itemPadding` is a public property now
