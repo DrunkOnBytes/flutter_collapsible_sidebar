@@ -6,7 +6,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 
 ![responsive-ui](https://user-images.githubusercontent.com/37551474/182013560-741723a2-64c3-40e2-9b6c-c640e7fcf1ba.gif)
 
-## 🌟 Version 2.0.4 ✨
+## 🌟 Version 2.0.5 ✨
 
 ---
 
@@ -39,7 +39,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.4` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.5` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -175,6 +175,7 @@ CollapsibleSidebar(
 | `screenPadding` | double | 4 | Padding to the screen |
 | `topPadding` | double | 0 | space between image avatar and icons |
 | `bottomPadding` | double | 0 | space between icons and toggle button |
+| `itemPadding` | double | 10 | space between collapsible items |
 | `fitItemsToBottom` | bool | true | fit all icons to the end of the space between image avatar and toggle button|
 | `showToggleButton` | bool | true | flag to enable/disable showing the toggle button |
 | `sidebarBoxShadow` | `List<BoxShadow>` | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |
