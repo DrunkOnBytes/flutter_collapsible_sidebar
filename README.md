@@ -16,6 +16,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 - Pre-built customizable tile widgets (CollapsibleItems)
 - Smooth Animation
 - Supports both LTR & RTL languages
+- Supports MULTI-LEVEL Menu
 
 ## Supported platforms
 
