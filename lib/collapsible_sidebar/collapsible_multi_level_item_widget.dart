@@ -62,7 +62,9 @@ class _CollapsibleMultiLevelItemWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (widget.parentComponent == true && (widget.isSelected == false || widget.isSelected == null) && isOpen == true) {
+    if (widget.parentComponent == true &&
+        (widget.isSelected == false || widget.isSelected == null) &&
+        isOpen == true) {
       setState(() {
         isOpen = false;
       });
@@ -98,32 +100,40 @@ class _CollapsibleMultiLevelItemWidgetState
             child: Container(
               height: widget.extendable == true && isOpen ? null : 0,
               child: Column(
-                children: widget.subItems.map((subItem) => CollapsibleItemWidget(
-                  onHoverPointer: widget.onHoverPointer,
-                  padding: widget.padding,
-                  offsetX: widget.offsetX,
-                  scale: widget.scale,
-                  leading: Icon(
-                    subItem.icon,
-                    size: widget.iconSize,
-                    color: widget.iconColor,
-                  ),
-                  iconSize: widget.iconSize,
-                  iconColor: widget.iconColor,
-                  title: subItem.text,
-                  textStyle: widget.textStyle,
-                  isCollapsed: widget.isCollapsed,
-                  minWidth: widget.minWidth,
-                  onTap: () {
-                    subItem.onPressed();
-                  },
-                  onLongPress: () {
-                    if (subItem.onHold != null) {
-                      subItem.onHold!();
-                    }
-                  },
-                  subItems: subItem.subItems,
-                )).toList(),
+                children: widget.subItems
+                    .map((subItem) => CollapsibleItemWidget(
+                          onHoverPointer: widget.onHoverPointer,
+                          padding: widget.padding,
+                          offsetX: widget.offsetX,
+                          scale: widget.scale,
+                          leading: subItem.iconImage != null
+                              ? CircleAvatar(
+                                  radius: widget.iconSize!/2,
+                                  backgroundImage: subItem.iconImage,
+                                  backgroundColor: Colors.transparent,
+                                )
+                              : Icon(
+                                  subItem.icon,
+                                  size: widget.iconSize,
+                                  color: widget.iconColor,
+                                ),
+                          iconSize: widget.iconSize,
+                          iconColor: widget.iconColor,
+                          title: subItem.text,
+                          textStyle: widget.textStyle,
+                          isCollapsed: widget.isCollapsed,
+                          minWidth: widget.minWidth,
+                          onTap: () {
+                            subItem.onPressed();
+                          },
+                          onLongPress: () {
+                            if (subItem.onHold != null) {
+                              subItem.onHold!();
+                            }
+                          },
+                          subItems: subItem.subItems,
+                        ))
+                    .toList(),
               ),
             ),
           ),
