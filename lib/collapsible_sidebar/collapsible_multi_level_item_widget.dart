@@ -108,15 +108,19 @@ class _CollapsibleMultiLevelItemWidgetState
                           scale: widget.scale,
                           leading: subItem.iconImage != null
                               ? CircleAvatar(
-                                  radius: widget.iconSize!/2,
+                                  radius: widget.iconSize! / 2,
                                   backgroundImage: subItem.iconImage,
                                   backgroundColor: Colors.transparent,
                                 )
-                              : Icon(
-                                  subItem.icon,
-                                  size: widget.iconSize,
-                                  color: widget.iconColor,
-                                ),
+                              : (subItem.icon != null
+                                  ? Icon(
+                                      subItem.icon,
+                                      size: widget.iconSize,
+                                      color: widget.iconColor,
+                                    )
+                                  : SizedBox(
+                                      width: widget.iconSize,
+                                    )),
                           iconSize: widget.iconSize,
                           iconColor: widget.iconColor,
                           title: subItem.text,

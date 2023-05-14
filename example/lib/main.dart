@@ -67,6 +67,7 @@ class _SidebarPageState extends State<SidebarPage> {
           CollapsibleItem(
               text: 'Shop',
               iconImage: AssetImage("assets/shop_icon.png"),
+              icon: Icons.ac_unit,
               onPressed: () => setState(() => _headline = 'Web2'),
               onHold: () => ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: const Text("Web2"))
@@ -132,6 +133,13 @@ class _SidebarPageState extends State<SidebarPage> {
         onPressed: () => setState(() => _headline = 'Event'),
         onHold: () => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: const Text("Event"))
+        ),
+      ),
+      CollapsibleItem(
+        text: 'No Icon',
+        onPressed: () => setState(() => _headline = 'Email'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: const Text("Email"))
         ),
       ),
       CollapsibleItem(

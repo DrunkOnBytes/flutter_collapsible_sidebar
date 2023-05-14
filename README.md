@@ -49,6 +49,8 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 
 1. Create a list of `CollapsibleItems` named `_items` (or whatever fancy name you like)
 
+For a collapsible item with sub-items to be the default selected item MARK ALL OF ITS SUB-ITEMS WITH THE `isSelected: true` property.
+
 ```dart
 List<CollapsibleItem> get _items {
     return [
@@ -62,9 +64,28 @@ List<CollapsibleItem> get _items {
         isSelected: true,
       ),
       CollapsibleItem(
+          text: 'Shop',
+          iconImage: AssetImage("assets/shop_icon.png"), //`iconImage` has priority over `icon` property
+          icon: Icons.ac_unit,
+          onPressed: () => setState(() => _headline = 'Shop'),
+          onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: const Text("Shop"))
+          ),
+          subItems: [
+            CollapsibleItem(
+              text: 'Cart',
+              icon: Icons.shopping_cart,
+              onPressed: () => setState(() => _headline = 'Cart'),
+              onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: const Text("Cart"))
+              ),
+            )
+          ]
+      ),
+      CollapsibleItem(
         text: 'Ice-Cream',
         icon: Icons.icecream,
-        onPressed: () => setState(() => _headline = 'Errors'),
+        onPressed: () => setState(() => _headline = 'Ice-Cream'),
         onHold: () => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: const Text("Ice-Cream"))
         ),

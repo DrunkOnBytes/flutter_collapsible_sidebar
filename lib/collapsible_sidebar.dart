@@ -363,15 +363,19 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         scale: _fraction,
         leading: item.iconImage != null
             ? CircleAvatar(
-                radius: widget.iconSize/2,
+                radius: widget.iconSize / 2,
                 backgroundImage: item.iconImage,
                 backgroundColor: Colors.transparent,
               )
-            : Icon(
-                item.icon,
-                size: widget.iconSize,
-                color: iconColor,
-              ),
+            : (item.icon != null
+                ? Icon(
+                    item.icon,
+                    size: widget.iconSize,
+                    color: iconColor,
+                  )
+                : SizedBox(
+                    width: widget.iconSize,
+                  )),
         iconSize: widget.iconSize,
         iconColor: iconColor,
         title: item.text,

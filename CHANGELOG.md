@@ -1,3 +1,5 @@
-## [2.0.4] - 02-04-2023
+## [2.0.5] - 14-05-2023
 
-- Added `onHold` parameter to take long press input on `CollapsibleItem`
+- Added multi-level menu
+- `itemPadding` is a public property now
+- `CollapsibleItems` will now accept images as well as icons using the `iconImage` and `icon` properties of CollapsibleItems. (Check examples for further clarity)
