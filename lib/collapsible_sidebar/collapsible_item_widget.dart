@@ -83,6 +83,7 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
                   minWidth: widget.minWidth,
                   isCollapsed: widget.isCollapsed,
                   parentComponent: widget.parentComponent,
+                  onHold: widget.onLongPress,
                   mainLevel: Row(
                     children: [
                       Flexible(child: widget.leading),

@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
         body: SidebarPage(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Yay! Button Pressed!'),
-            ));
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: const Text('Yay! Button Pressed!'))
+            );
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.navigation),
@@ -58,9 +58,9 @@ class _SidebarPageState extends State<SidebarPage> {
           CollapsibleItem(
               text: 'Menu',
               icon: Icons.menu_book,
-              onPressed: () => setState(() => _headline = 'Web1'),
+              onPressed: () => setState(() => _headline = 'Menu'),
               onHold: () => ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: const Text("Web1"))
+                  SnackBar(content: const Text("Menu"))
               ),
               isSelected: true,
           ),
@@ -68,18 +68,18 @@ class _SidebarPageState extends State<SidebarPage> {
               text: 'Shop',
               iconImage: AssetImage("assets/shop_icon.png"),
               icon: Icons.ac_unit,
-              onPressed: () => setState(() => _headline = 'Web2'),
+              onPressed: () => setState(() => _headline = 'Shop'),
               onHold: () => ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: const Text("Web2"))
+                  SnackBar(content: const Text("Shop"))
               ),
               isSelected: true,
               subItems: [
                 CollapsibleItem(
                     text: 'Cart',
                     icon: Icons.shopping_cart,
-                    onPressed: () => setState(() => _headline = 'Web22'),
+                    onPressed: () => setState(() => _headline = 'Cart'),
                     onHold: () => ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: const Text("Web22"))
+                        SnackBar(content: const Text("Cart"))
                     ),
                     isSelected: true,
                 )
@@ -137,9 +137,9 @@ class _SidebarPageState extends State<SidebarPage> {
       ),
       CollapsibleItem(
         text: 'No Icon',
-        onPressed: () => setState(() => _headline = 'Email'),
+        onPressed: () => setState(() => _headline = 'No Icon'),
         onHold: () => ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: const Text("Email"))
+            SnackBar(content: const Text("No Icon"))
         ),
       ),
       CollapsibleItem(

@@ -375,6 +375,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                   )
                 : SizedBox(
                     width: widget.iconSize,
+                    height: widget.iconSize,
                   )),
         iconSize: widget.iconSize,
         iconColor: iconColor,

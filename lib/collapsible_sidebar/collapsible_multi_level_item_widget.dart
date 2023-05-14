@@ -16,6 +16,7 @@ class CollapsibleMultiLevelItemWidget extends StatefulWidget {
     this.iconColor,
     this.iconSize,
     this.onTapMainLevel,
+    this.onHold,
     this.isCollapsed,
     this.isSelected,
     this.minWidth,
@@ -34,7 +35,7 @@ class CollapsibleMultiLevelItemWidget extends StatefulWidget {
   final bool? disable;
   final double? iconSize;
   final Color? iconColor;
-  final VoidCallback? onTapMainLevel;
+  final VoidCallback? onTapMainLevel, onHold;
   final bool? parentComponent;
 
   @override
@@ -80,6 +81,7 @@ class _CollapsibleMultiLevelItemWidgetState
               isOpen = !isOpen;
             });
           },
+          onLongPress: widget.onHold,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -120,6 +122,7 @@ class _CollapsibleMultiLevelItemWidgetState
                                     )
                                   : SizedBox(
                                       width: widget.iconSize,
+                                      height: widget.iconSize,
                                     )),
                           iconSize: widget.iconSize,
                           iconColor: widget.iconColor,
