@@ -49,7 +49,7 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 
 1. Create a list of `CollapsibleItems` named `_items` (or whatever fancy name you like)
 
-For a collapsible item with sub-items to be the default selected item MARK ALL OF ITS SUB-ITEMS WITH THE `isSelected: true` property.
+### For a collapsible item with sub-items to be the default selected item MARK ALL OF ITS SUB-ITEMS WITH THE `isSelected: true` property.
 
 ```dart
 List<CollapsibleItem> get _items {
