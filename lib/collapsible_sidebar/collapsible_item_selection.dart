@@ -15,10 +15,12 @@ class CollapsibleItemSelection extends StatefulWidget {
   final Curve curve;
 
   @override
-  _CollapsibleItemSelectionState createState() => _CollapsibleItemSelectionState();
+  _CollapsibleItemSelectionState createState() =>
+      _CollapsibleItemSelectionState();
 }
 
-class _CollapsibleItemSelectionState extends State<CollapsibleItemSelection> with SingleTickerProviderStateMixin {
+class _CollapsibleItemSelectionState extends State<CollapsibleItemSelection>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _offsetYAnimation;
   late CurvedAnimation _curvedAnimation;
