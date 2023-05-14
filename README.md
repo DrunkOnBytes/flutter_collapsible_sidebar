@@ -55,15 +55,6 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 List<CollapsibleItem> get _items {
     return [
       CollapsibleItem(
-        text: 'Dashboard',
-        icon: Icons.assessment,
-        onPressed: () => setState(() => _headline = 'DashBoard'),
-        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: const Text("DashBoard"))
-        ),
-        isSelected: true,
-      ),
-      CollapsibleItem(
           text: 'Shop',
           iconImage: AssetImage("assets/shop_icon.png"), //`iconImage` has priority over `icon` property
           icon: Icons.ac_unit,
@@ -71,6 +62,7 @@ List<CollapsibleItem> get _items {
           onHold: () => ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: const Text("Shop"))
           ),
+          isSelected: true,
           subItems: [
             CollapsibleItem(
               text: 'Cart',
@@ -79,8 +71,17 @@ List<CollapsibleItem> get _items {
               onHold: () => ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: const Text("Cart"))
               ),
+              isSelected: true,
             )
           ]
+      ),
+      CollapsibleItem(
+        text: 'Dashboard',
+        icon: Icons.assessment,
+        onPressed: () => setState(() => _headline = 'DashBoard'),
+        onHold: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: const Text("DashBoard"))
+        ),
       ),
       CollapsibleItem(
         text: 'Ice-Cream',
