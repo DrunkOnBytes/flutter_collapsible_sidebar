@@ -260,7 +260,7 @@ class _SidebarPageState extends State<SidebarPage> {
             offset: Offset(-size.height * 0.3, -size.width * 0.23),
             child: Text(
               _headline,
-              style: Theme.of(context).textTheme.headline1,
+              style: Theme.of(context).textTheme.displayLarge,
               overflow: TextOverflow.visible,
               softWrap: false,
             ),
