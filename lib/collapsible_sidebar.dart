@@ -32,6 +32,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.iconSize = 40,
     this.toggleButtonIcon = Icons.chevron_right,
     this.backgroundColor = const Color(0xff2B3138),
+    this.avatarBackgroundColor = const Color(0xff6A7886),
     this.selectedIconBox = const Color(0xff2F4047),
     this.selectedIconColor = const Color(0xff4AC6EA),
     this.selectedTextColor = const Color(0xffF3F7F7),
@@ -65,12 +66,7 @@ class CollapsibleSidebar extends StatefulWidget {
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
   final IconData titleBackIcon;
   final Widget body;
-  final bool showToggleButton,
-      fitItemsToBottom,
-      isCollapsed,
-      titleBack,
-      showTitle,
-      collapseOnBodyTap;
+  final bool showToggleButton, fitItemsToBottom, isCollapsed, titleBack, showTitle, collapseOnBodyTap;
   final List<CollapsibleItem> items;
   final double height,
       minWidth,
@@ -84,6 +80,7 @@ class CollapsibleSidebar extends StatefulWidget {
       screenPadding;
   final IconData toggleButtonIcon;
   final Color backgroundColor,
+      avatarBackgroundColor,
       selectedIconBox,
       selectedIconColor,
       selectedTextColor,
@@ -98,20 +95,14 @@ class CollapsibleSidebar extends StatefulWidget {
   _CollapsibleSidebarState createState() => _CollapsibleSidebarState();
 }
 
-class _CollapsibleSidebarState extends State<CollapsibleSidebar>
-    with SingleTickerProviderStateMixin {
+class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _widthAnimation;
   late CurvedAnimation _curvedAnimation;
   late double tempWidth;
 
   var _isCollapsed;
-  late double _currWidth,
-      _delta,
-      _delta1By4,
-      _delta3by4,
-      _maxOffsetX,
-      _maxOffsetY;
+  late double _currWidth, _delta, _delta1By4, _delta3by4, _maxOffsetX, _maxOffsetY;
   late int _selectedItemIndex;
 
   @override
@@ -210,9 +201,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       setState(() => _isCollapsed = true);
     else {
       var threshold = _isCollapsed ? _delta1By4 : _delta3by4;
-      var endWidth = _currWidth - widget.minWidth > threshold
-          ? tempWidth
-          : widget.minWidth;
+      var endWidth = _currWidth - widget.minWidth > threshold ? tempWidth : widget.minWidth;
       _animateTo(endWidth);
     }
   }
@@ -284,9 +273,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr
-                ? Alignment.topLeft
-                : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: widget.minWidth * 1.1),
@@ -296,9 +283,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             ],
           )
         : Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr
-                ? Alignment.topLeft
-                : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               widget.collapseOnBodyTap
                   ? GestureDetector(
@@ -330,10 +315,10 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
           ? Icon(
               widget.titleBackIcon,
               size: widget.iconSize,
-              color: widget.unselectedIconColor,
+              color: widget.avatarBackgroundColor,
             )
           : CollapsibleAvatar(
-              backgroundColor: widget.unselectedIconColor,
+              backgroundColor: widget.avatarBackgroundColor,
               avatarSize: widget.iconSize,
               name: widget.title,
               avatarImg: widget.avatarImg,
@@ -417,8 +402,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         ),
       ),
       title: widget.toggleTitle,
-      textStyle:
-          _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
+      textStyle: _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
       isCollapsed: _isCollapsed,
       minWidth: widget.minWidth,
       onTap: () {
