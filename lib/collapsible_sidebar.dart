@@ -30,7 +30,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.maxWidth = 270,
     this.borderRadius = 15,
     this.iconSize = 40,
-    this.customContentPaddingLeft = 0,
+    this.customContentPaddingLeft = -1,
     this.toggleButtonIcon = Icons.chevron_right,
     this.backgroundColor = const Color(0xff2B3138),
     this.selectedIconBox = const Color(0xff2F4047),
@@ -277,8 +277,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  left: widget.minWidth * (widget.customContentPaddingLeft != 0 ? 1 : 1.1) +
-                      (widget.customContentPaddingLeft != 0 ? widget.customContentPaddingLeft : 0),
+                                         left: widget.minWidth * (widget.customContentPaddingLeft < 0 ? 1.1 : 1) + (widget.customContentPaddingLeft >= 0 ? widget.customContentPaddingLeft : 0),
                 ),
                 child: widget.body,
               ),
@@ -296,16 +295,14 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                          left: widget.minWidth * (widget.customContentPaddingLeft != 0 ? 1 : 1.1) +
-                              (widget.customContentPaddingLeft != 0 ? widget.customContentPaddingLeft : 0),
+                          left: widget.minWidth * (widget.customContentPaddingLeft < 0 ? 1.1 : 1) + (widget.customContentPaddingLeft >= 0 ? widget.customContentPaddingLeft : 0),
                         ),
                         child: widget.body,
                       ),
                     )
                   : Padding(
                       padding: EdgeInsets.only(
-                          left: widget.minWidth * (widget.customContentPaddingLeft != 0 ? 1 : 1.1) +
-                              (widget.customContentPaddingLeft != 0 ? widget.customContentPaddingLeft : 0)),
+                                                  left: widget.minWidth * (widget.customContentPaddingLeft < 0 ? 1.1 : 1) + (widget.customContentPaddingLeft >= 0 ? widget.customContentPaddingLeft : 0),),
                       child: widget.body,
                     ),
               sidebar,
