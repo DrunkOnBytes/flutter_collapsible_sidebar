@@ -45,6 +45,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.topPadding = 0,
     this.bottomPadding = 0,
     this.itemPadding = 10,
+    this.customItemOffsetX = 0,
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
@@ -73,6 +74,7 @@ class CollapsibleSidebar extends StatefulWidget {
       maxWidth,
       borderRadius,
       iconSize,
+      customItemOffsetX,
       padding = 10,
       itemPadding,
       topPadding,
@@ -309,7 +311,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
     return CollapsibleItemWidget(
       onHoverPointer: widget.onHoverPointer,
       padding: widget.itemPadding,
-      offsetX: _offsetX,
+      offsetX: widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
       scale: _fraction,
       leading: widget.titleBack
           ? Icon(
@@ -344,7 +346,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
       return CollapsibleItemWidget(
         onHoverPointer: widget.onHoverPointer,
         padding: widget.itemPadding,
-        offsetX: _offsetX,
+      offsetX: widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
         scale: _fraction,
         leading: item.iconImage != null
             ? CircleAvatar(
@@ -391,7 +393,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
     return CollapsibleItemWidget(
       onHoverPointer: widget.onHoverPointer,
       padding: widget.itemPadding,
-      offsetX: _offsetX,
+      offsetX: widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
       scale: _fraction,
       leading: Transform.rotate(
         angle: _currAngle,
