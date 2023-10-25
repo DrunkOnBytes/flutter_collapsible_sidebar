@@ -30,6 +30,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.maxWidth = 270,
     this.borderRadius = 15,
     this.iconSize = 40,
+    this.customContentPaddingLeft = 0,
     this.toggleButtonIcon = Icons.chevron_right,
     this.backgroundColor = const Color(0xff2B3138),
     this.selectedIconBox = const Color(0xff2F4047),
@@ -65,12 +66,7 @@ class CollapsibleSidebar extends StatefulWidget {
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
   final IconData titleBackIcon;
   final Widget body;
-  final bool showToggleButton,
-      fitItemsToBottom,
-      isCollapsed,
-      titleBack,
-      showTitle,
-      collapseOnBodyTap;
+  final bool showToggleButton, fitItemsToBottom, isCollapsed, titleBack, showTitle, collapseOnBodyTap;
   final List<CollapsibleItem> items;
   final double height,
       minWidth,
@@ -81,7 +77,8 @@ class CollapsibleSidebar extends StatefulWidget {
       itemPadding,
       topPadding,
       bottomPadding,
-      screenPadding;
+      screenPadding,
+      customContentPaddingLeft;
   final IconData toggleButtonIcon;
   final Color backgroundColor,
       selectedIconBox,
@@ -98,20 +95,14 @@ class CollapsibleSidebar extends StatefulWidget {
   _CollapsibleSidebarState createState() => _CollapsibleSidebarState();
 }
 
-class _CollapsibleSidebarState extends State<CollapsibleSidebar>
-    with SingleTickerProviderStateMixin {
+class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _widthAnimation;
   late CurvedAnimation _curvedAnimation;
   late double tempWidth;
 
   var _isCollapsed;
-  late double _currWidth,
-      _delta,
-      _delta1By4,
-      _delta3by4,
-      _maxOffsetX,
-      _maxOffsetY;
+  late double _currWidth, _delta, _delta1By4, _delta3by4, _maxOffsetX, _maxOffsetY;
   late int _selectedItemIndex;
 
   @override
@@ -210,9 +201,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
       setState(() => _isCollapsed = true);
     else {
       var threshold = _isCollapsed ? _delta1By4 : _delta3by4;
-      var endWidth = _currWidth - widget.minWidth > threshold
-          ? tempWidth
-          : widget.minWidth;
+      var endWidth = _currWidth - widget.minWidth > threshold ? tempWidth : widget.minWidth;
       _animateTo(endWidth);
     }
   }
@@ -284,21 +273,20 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
 
     return _isCollapsed
         ? Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr
-                ? Alignment.topLeft
-                : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                padding: EdgeInsets.only(
+                  left: widget.minWidth * (widget.customContentPaddingLeft != 0 ? 1 : 1.1) +
+                      (widget.customContentPaddingLeft != 0 ? widget.customContentPaddingLeft : 0),
+                ),
                 child: widget.body,
               ),
               sidebar,
             ],
           )
         : Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr
-                ? Alignment.topLeft
-                : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
             children: [
               widget.collapseOnBodyTap
                   ? GestureDetector(
@@ -307,12 +295,17 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
                         _animateTo(widget.minWidth);
                       },
                       child: Padding(
-                        padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                        padding: EdgeInsets.only(
+                          left: widget.minWidth * (widget.customContentPaddingLeft != 0 ? 1 : 1.1) +
+                              (widget.customContentPaddingLeft != 0 ? widget.customContentPaddingLeft : 0),
+                        ),
                         child: widget.body,
                       ),
                     )
                   : Padding(
-                      padding: EdgeInsets.only(left: widget.minWidth * 1.1),
+                      padding: EdgeInsets.only(
+                          left: widget.minWidth * (widget.customContentPaddingLeft != 0 ? 1 : 1.1) +
+                              (widget.customContentPaddingLeft != 0 ? widget.customContentPaddingLeft : 0)),
                       child: widget.body,
                     ),
               sidebar,
@@ -417,8 +410,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         ),
       ),
       title: widget.toggleTitle,
-      textStyle:
-          _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
+      textStyle: _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
       isCollapsed: _isCollapsed,
       minWidth: widget.minWidth,
       onTap: () {
