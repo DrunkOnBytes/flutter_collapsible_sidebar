@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 class CollapsibleItem {
   CollapsibleItem({
     required this.text,
+    this.badgeCount,
     this.icon,
     this.iconImage,
     required this.onPressed,
@@ -13,6 +14,7 @@ class CollapsibleItem {
   });
 
   final String text;
+  int? badgeCount;
   IconData? icon;
   ImageProvider? iconImage;
   final Function onPressed;

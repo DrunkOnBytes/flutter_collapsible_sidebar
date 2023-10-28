@@ -37,6 +37,8 @@ class CollapsibleSidebar extends StatefulWidget {
     this.selectedTextColor = const Color(0xffF3F7F7),
     this.unselectedIconColor = const Color(0xff6A7886),
     this.unselectedTextColor = const Color(0xffC0C7D0),
+    this.badgeBackgroundColor = const Color(0xffFF6767),
+    this.badgeTextColor = const Color(0xffF3F7F7),
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.fastLinearToSlowEaseIn,
     this.screenPadding = 4,
@@ -88,7 +90,9 @@ class CollapsibleSidebar extends StatefulWidget {
       selectedIconColor,
       selectedTextColor,
       unselectedIconColor,
-      unselectedTextColor;
+      unselectedTextColor,
+      badgeBackgroundColor,
+      badgeTextColor;
   final Duration duration;
   final Curve curve;
   final VoidCallback? onTitleTap;
@@ -361,22 +365,32 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
         padding: widget.itemPadding,
         offsetX: _offsetX,
         scale: _fraction,
-        leading: item.iconImage != null
-            ? CircleAvatar(
-                radius: widget.iconSize / 2,
-                backgroundImage: item.iconImage,
-                backgroundColor: Colors.transparent,
-              )
-            : (item.icon != null
-                ? Icon(
-                    item.icon,
-                    size: widget.iconSize,
-                    color: iconColor,
+        leading: item.badgeCount != null && item.badgeCount! > 0
+            ? Badge.count(
+                backgroundColor: widget.badgeBackgroundColor,
+                textColor: widget.badgeTextColor,
+                count: item.badgeCount!,
+                child: Icon(
+                  item.icon,
+                  size: widget.iconSize,
+                  color: iconColor,
+                ))
+            : item.iconImage != null
+                ? CircleAvatar(
+                    radius: widget.iconSize / 2,
+                    backgroundImage: item.iconImage,
+                    backgroundColor: Colors.transparent,
                   )
-                : SizedBox(
-                    width: widget.iconSize,
-                    height: widget.iconSize,
-                  )),
+                : (item.icon != null
+                    ? Icon(
+                        item.icon,
+                        size: widget.iconSize,
+                        color: iconColor,
+                      )
+                    : SizedBox(
+                        width: widget.iconSize,
+                        height: widget.iconSize,
+                      )),
         iconSize: widget.iconSize,
         iconColor: iconColor,
         title: item.text,
