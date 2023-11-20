@@ -1,3 +1,4 @@
-## [2.0.6] - 27-08-2023
+## [2.0.7] - 20-11-2023
 
-- migrated to Dart 3
+- added alert badges on collapsible items
+- added new properties like customContentPaddingLeft, customItemOffsetX, avatarBackgroundColor, badgeTextColor, badgeBackgroundColor, badgeCount

@@ -6,7 +6,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 
 ![responsive-ui](https://user-images.githubusercontent.com/37551474/182013560-741723a2-64c3-40e2-9b6c-c640e7fcf1ba.gif)
 
-## 🌟 Version 2.0.6 ✨
+## 🌟 Version 2.0.7 ✨
 
 ---
 
@@ -17,6 +17,7 @@ A collapsible sidebar for Flutter apps implementing the Material Design.
 - Smooth Animation
 - Supports both LTR & RTL languages
 - Supports MULTI-LEVEL Menu
+- Alert Badges on CollapsibleItems
 
 ## Supported platforms
 
@@ -40,7 +41,7 @@ Note: this page is built with flutter-web. For a better user experience, please 
 
 ## Installation
 
-Add `collapsible_sidebar: ^2.0.6` to your `pubspec.yaml` dependencies. And import it:
+Add `collapsible_sidebar: ^2.0.7` to your `pubspec.yaml` dependencies. And import it:
 
 ```dart
 import 'package:collapsible_sidebar/collapsible_sidebar.dart';
@@ -78,6 +79,7 @@ List<CollapsibleItem> get _items {
       ),
       CollapsibleItem(
         text: 'Dashboard',
+        badgeCount: 7,
         icon: Icons.assessment,
         onPressed: () => setState(() => _headline = 'DashBoard'),
         onHold: () => ScaffoldMessenger.of(context).showSnackBar(
@@ -163,20 +165,25 @@ CollapsibleSidebar(
 | `maxWidth` | double | 270 |  Width of Sidebar when Expanded |
 | `borderRadius` | double |15 | Radius of the borders |
 | `iconSize` | double | 40 | Size of the icons |
+| `customContentPaddingLeft` | double | -1 | Padding to the left of CollapsibleItems (keep value less than 0 for default padding) |
 | `toggleTitle` | String | 'Collapse' | title text of Toggle Button |
 | `toggleButtonIcon` | Icons | Icons.chevron_right | Icon of the Toggle button |
 | `backgroundColor` | Color | Color(0xff2B3138) | The background color |
+| `avatarBackgroundColor` | Color | Color(0xff6A7886) | The avatar background color |
 | `selectedIconBox` | Color | Color(0xff2F4047) | Color of Icon Box when selected |
 | `selectedIconColor` | Color | Color(0xff4AC6EA) | Color of Icon when selected |
 | `selectedTextColor` | Color | Color(0xffF3F7F7) | Color of text when selected |
 | `unselectedIconColor` | Color | Color(0xff6A7886) | Color of Icon when not selected |
 | `unselectedTextColor` | Color | Color(0xffC0C7D0) | Color of text when not selected |
+| `badgeBackgroundColor` | Color | Color(0xffFF6767) | Background color of badges on Collapsible Items |
+| `badgeTextColor` | Color | Color(0xffF3F7F7) | Badge Text color of badges on Collapsible Items |
 | `duration` | Duration | Duration(milliseconds: 500) | Animation duration for collapsed->expanded & vice-versa |
 | `curve` | Curves | Curves.fastLinearToSlowEaseIn | Animation curve for collapsed->expanded & vice-versa |
 | `screenPadding` | double | 4 | Padding to the screen |
 | `topPadding` | double | 0 | space between image avatar and icons |
 | `bottomPadding` | double | 0 | space between icons and toggle button |
 | `itemPadding` | double | 10 | space between collapsible items |
+| `customItemOffsetX ` | double | -1 | X axis offset for collapsible items (keep value less than 0 for default offset) |
 | `fitItemsToBottom` | bool | true | fit all icons to the end of the space between image avatar and toggle button|
 | `showToggleButton` | bool | true | flag to enable/disable showing the toggle button |
 | `sidebarBoxShadow` | `List<BoxShadow>` | [BoxShadow(color: Colors.blue, blurRadius: 10, spreadRadius: 0.01, offset: Offset(3, 3),),] | Just like the "BoxDecoration" parameter of a "Container" |

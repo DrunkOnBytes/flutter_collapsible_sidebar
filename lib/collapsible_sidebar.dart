@@ -48,7 +48,7 @@ class CollapsibleSidebar extends StatefulWidget {
     this.topPadding = 0,
     this.bottomPadding = 0,
     this.itemPadding = 10,
-    this.customItemOffsetX = 0,
+    this.customItemOffsetX = -1,
     this.fitItemsToBottom = false,
     this.onTitleTap,
     this.isCollapsed = true,
@@ -70,7 +70,12 @@ class CollapsibleSidebar extends StatefulWidget {
   final TextStyle? titleStyle, textStyle, toggleTitleStyle;
   final IconData titleBackIcon;
   final Widget body;
-  final bool showToggleButton, fitItemsToBottom, isCollapsed, titleBack, showTitle, collapseOnBodyTap;
+  final bool showToggleButton,
+      fitItemsToBottom,
+      isCollapsed,
+      titleBack,
+      showTitle,
+      collapseOnBodyTap;
   final List<CollapsibleItem> items;
   final double height,
       minWidth,
@@ -103,14 +108,20 @@ class CollapsibleSidebar extends StatefulWidget {
   _CollapsibleSidebarState createState() => _CollapsibleSidebarState();
 }
 
-class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTickerProviderStateMixin {
+class _CollapsibleSidebarState extends State<CollapsibleSidebar>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _widthAnimation;
   late CurvedAnimation _curvedAnimation;
   late double tempWidth;
 
   var _isCollapsed;
-  late double _currWidth, _delta, _delta1By4, _delta3by4, _maxOffsetX, _maxOffsetY;
+  late double _currWidth,
+      _delta,
+      _delta1By4,
+      _delta3by4,
+      _maxOffsetX,
+      _maxOffsetY;
   late int _selectedItemIndex;
 
   @override
@@ -209,7 +220,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
       setState(() => _isCollapsed = true);
     else {
       var threshold = _isCollapsed ? _delta1By4 : _delta3by4;
-      var endWidth = _currWidth - widget.minWidth > threshold ? tempWidth : widget.minWidth;
+      var endWidth = _currWidth - widget.minWidth > threshold
+          ? tempWidth
+          : widget.minWidth;
       _animateTo(endWidth);
     }
   }
@@ -281,11 +294,17 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
 
     return _isCollapsed
         ? Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                                         left: widget.minWidth * (widget.customContentPaddingLeft < 0 ? 1.1 : 1) + (widget.customContentPaddingLeft >= 0 ? widget.customContentPaddingLeft : 0),
+                  left: widget.minWidth *
+                          (widget.customContentPaddingLeft < 0 ? 1.1 : 1) +
+                      (widget.customContentPaddingLeft >= 0
+                          ? widget.customContentPaddingLeft
+                          : 0),
                 ),
                 child: widget.body,
               ),
@@ -293,7 +312,9 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
             ],
           )
         : Stack(
-            alignment: Directionality.of(context) == TextDirection.ltr ? Alignment.topLeft : Alignment.topRight,
+            alignment: Directionality.of(context) == TextDirection.ltr
+                ? Alignment.topLeft
+                : Alignment.topRight,
             children: [
               widget.collapseOnBodyTap
                   ? GestureDetector(
@@ -303,14 +324,27 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
                       },
                       child: Padding(
                         padding: EdgeInsets.only(
-                          left: widget.minWidth * (widget.customContentPaddingLeft < 0 ? 1.1 : 1) + (widget.customContentPaddingLeft >= 0 ? widget.customContentPaddingLeft : 0),
+                          left: widget.minWidth *
+                                  (widget.customContentPaddingLeft < 0
+                                      ? 1.1
+                                      : 1) +
+                              (widget.customContentPaddingLeft >= 0
+                                  ? widget.customContentPaddingLeft
+                                  : 0),
                         ),
                         child: widget.body,
                       ),
                     )
                   : Padding(
                       padding: EdgeInsets.only(
-                                                  left: widget.minWidth * (widget.customContentPaddingLeft < 0 ? 1.1 : 1) + (widget.customContentPaddingLeft >= 0 ? widget.customContentPaddingLeft : 0),),
+                        left: widget.minWidth *
+                                (widget.customContentPaddingLeft < 0
+                                    ? 1.1
+                                    : 1) +
+                            (widget.customContentPaddingLeft >= 0
+                                ? widget.customContentPaddingLeft
+                                : 0),
+                      ),
                       child: widget.body,
                     ),
               sidebar,
@@ -322,7 +356,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
     return CollapsibleItemWidget(
       onHoverPointer: widget.onHoverPointer,
       padding: widget.itemPadding,
-      offsetX: widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
+      offsetX:
+          widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
       scale: _fraction,
       leading: widget.titleBack
           ? Icon(
@@ -357,7 +392,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
       return CollapsibleItemWidget(
         onHoverPointer: widget.onHoverPointer,
         padding: widget.itemPadding,
-      offsetX: widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
+        offsetX:
+            widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
         scale: _fraction,
         leading: item.badgeCount != null && item.badgeCount! > 0
             ? Badge.count(
@@ -414,7 +450,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
     return CollapsibleItemWidget(
       onHoverPointer: widget.onHoverPointer,
       padding: widget.itemPadding,
-      offsetX: widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
+      offsetX:
+          widget.customItemOffsetX >= 0 ? widget.customItemOffsetX : _offsetX,
       scale: _fraction,
       leading: Transform.rotate(
         angle: _currAngle,
@@ -425,7 +462,8 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar> with SingleTick
         ),
       ),
       title: widget.toggleTitle,
-      textStyle: _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
+      textStyle:
+          _textStyle(widget.unselectedTextColor, widget.toggleTitleStyle),
       isCollapsed: _isCollapsed,
       minWidth: widget.minWidth,
       onTap: () {
