@@ -441,6 +441,7 @@ class _CollapsibleSidebarState extends State<CollapsibleSidebar>
             item.onHold!();
           }
         },
+        toolTip: item.toolTip,
         subItems: item.subItems,
       );
     });

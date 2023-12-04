@@ -20,6 +20,7 @@ class CollapsibleItemWidget extends StatefulWidget {
     this.iconSize,
     this.iconColor,
     this.parentComponent,
+    this.toolTip,
   });
 
   final MouseCursor onHoverPointer;
@@ -36,6 +37,7 @@ class CollapsibleItemWidget extends StatefulWidget {
   final Color? iconColor;
   final bool? parentComponent;
   final VoidCallback? onLongPress;
+  final String? toolTip;
 
   @override
   _CollapsibleItemWidgetState createState() => _CollapsibleItemWidgetState();
@@ -59,45 +61,49 @@ class _CollapsibleItemWidgetState extends State<CollapsibleItemWidget> {
       },
       cursor: widget.onHoverPointer,
       child: LayoutBuilder(builder: (context, boxConstraints) {
-        return Container(
-          color: Colors.transparent,
-          padding: EdgeInsets.all(widget.padding),
-          child: widget.subItems == null
-              ? GestureDetector(
-                  onTap: widget.onTap,
-                  onLongPress: widget.onLongPress,
-                  child: Row(
-                    children: [
-                      widget.leading,
-                      _title,
-                    ],
+        return Tooltip(
+          // only show a tip, if requested, when collapsed
+          message: widget.isCollapsed ?? false ? widget.toolTip ?? "" : "",
+          child: Container(
+            color: Colors.transparent,
+            padding: EdgeInsets.all(widget.padding),
+            child: widget.subItems == null
+                ? GestureDetector(
+                    onTap: widget.onTap,
+                    onLongPress: widget.onLongPress,
+                    child: Row(
+                      children: [
+                        widget.leading,
+                        _title,
+                      ],
+                    ),
+                  )
+                : CollapsibleMultiLevelItemWidget(
+                    onHoverPointer: widget.onHoverPointer,
+                    textStyle: widget.textStyle,
+                    offsetX: widget.offsetX,
+                    isSelected: widget.isSelected,
+                    scale: widget.scale,
+                    padding: widget.padding,
+                    minWidth: widget.minWidth,
+                    isCollapsed: widget.isCollapsed,
+                    parentComponent: widget.parentComponent,
+                    onHold: widget.onLongPress,
+                    mainLevel: Row(
+                      children: [
+                        Flexible(child: widget.leading),
+                        _title,
+                      ],
+                    ),
+                    onTapMainLevel: widget.onTap,
+                    subItems: widget.subItems!,
+                    extendable: widget.isCollapsed != false ||
+                        widget.isSelected != false,
+                    disable: widget.isCollapsed,
+                    iconColor: widget.iconColor,
+                    iconSize: widget.iconSize,
                   ),
-                )
-              : CollapsibleMultiLevelItemWidget(
-                  onHoverPointer: widget.onHoverPointer,
-                  textStyle: widget.textStyle,
-                  offsetX: widget.offsetX,
-                  isSelected: widget.isSelected,
-                  scale: widget.scale,
-                  padding: widget.padding,
-                  minWidth: widget.minWidth,
-                  isCollapsed: widget.isCollapsed,
-                  parentComponent: widget.parentComponent,
-                  onHold: widget.onLongPress,
-                  mainLevel: Row(
-                    children: [
-                      Flexible(child: widget.leading),
-                      _title,
-                    ],
-                  ),
-                  onTapMainLevel: widget.onTap,
-                  subItems: widget.subItems!,
-                  extendable:
-                      widget.isCollapsed != false || widget.isSelected != false,
-                  disable: widget.isCollapsed,
-                  iconColor: widget.iconColor,
-                  iconSize: widget.iconSize,
-                ),
+          ),
         );
       }),
     );
