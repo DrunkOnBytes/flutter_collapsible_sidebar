@@ -11,6 +11,7 @@ class CollapsibleItem {
     this.onHold,
     this.isSelected = false,
     this.subItems,
+    this.toolTip,
   });
 
   final String text;
@@ -21,4 +22,6 @@ class CollapsibleItem {
   final Function? onHold;
   bool isSelected;
   List<CollapsibleItem>? subItems;
+  /// Tip to use when collapsed (e.g. during mouse-over in web)
+  String? toolTip;
 }
